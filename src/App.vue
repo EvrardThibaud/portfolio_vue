@@ -1,10 +1,12 @@
 <script setup>
+import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
-  <h1 >Portfolio</h1>
+  <Navbar></Navbar>
+  <main class="flex flex-col justify-center items-center">
+    <RouterView></RouterView>
+  </main>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
