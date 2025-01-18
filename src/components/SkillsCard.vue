@@ -52,8 +52,9 @@ function handleViewMoreSkills() {
     </p>
 
     <div
+      id="skillsContainer"
       ref="skillsContainer"
-      class="flex justify-between flex-wrap gap-3 h-20 overflow-hidden my-6"
+      class="flex justify-between flex-wrap gap-3 h-24 overflow-hidden my-6 relative"
     >
       <div
         class="flex items-center gap-3"
@@ -79,6 +80,17 @@ function handleViewMoreSkills() {
 </template>
 
 <style scoped>
+#skillsContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; 
+  background: #0d0d0d; 
+  filter: blur(1px); 
+}
+
 img {
   max-height: 30px;
   max-width: 30px;
