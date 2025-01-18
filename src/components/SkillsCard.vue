@@ -45,15 +45,15 @@ function handleViewMoreSkills() {
 
 <template>
   <div class="card">
-    <p >My Skills</p>
-    <p>
+    <p class="text-2xl font-semibold leading-7">My Skills</p>
+    <p class="text-justify pt-2 leading-4 text-sm">
       Here are the tools, languages, and frameworks I am proficient in,
       showcasing my expertise in web development and software engineering.
     </p>
 
     <div
       ref="skillsContainer"
-      class="flex justify-between flex-wrap gap-3 h-20 overflow-hidden"
+      class="flex justify-between flex-wrap gap-3 h-20 overflow-hidden my-6"
     >
       <div
         class="flex items-center gap-3"
