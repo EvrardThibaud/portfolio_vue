@@ -8,7 +8,12 @@
       I'm a 20-year-old computer science student with a deep passion for web
       development.
     </p>
-    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    <a href="cv_thibaud_evrard.pdf" target="_blank">
+      <div class="small_card hover mt-2">
+        <p>My CV</p>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
   </div>
 </template>
 

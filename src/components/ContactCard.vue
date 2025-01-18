@@ -23,31 +23,20 @@ function handleCopyEmail() {
     <a
       href="https://www.linkedin.com/in/thibaud-evrard-869431258/"
       target="_blank"
-      class="text-5xl hover flex"
+      class="text-2xl hover flex"
     >
-      <i class="fa-brands fa-linkedin"></i>
+      <div class="small_card hover">
+        <i class="fa-brands fa-linkedin"></i>
+      </div>
     </a>
 
-    <div id="email" @click="handleCopyEmail" class="hover">
+    <div @click="handleCopyEmail" class="hover small_card">
       <p :class="['select-none', { 'text-success': email.isCopied }]">
         {{ email.content }}
       </p>
-      <i
-        :class="['fa-copy', email.isCopied ? 'fa-solid' : 'fa-regular']"
-        
-      ></i>
+      <i :class="['fa-copy', email.isCopied ? 'fa-solid' : 'fa-regular']"></i>
     </div>
   </div>
 </template>
 
-<style scoped>
-#email {
-  height: 3rem;
-  padding: 0 1rem;
-  box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-</style>
+<style scoped></style>
