@@ -19,7 +19,7 @@ function handleCopyEmail() {
 </script>
 
 <template>
-  <div class="card flex justify-center items-center flex-row gap-2">
+  <div class="card flex items-center flex-row flex-wrap gap-2">
     <a
       href="https://www.linkedin.com/in/thibaud-evrard-869431258/"
       target="_blank"

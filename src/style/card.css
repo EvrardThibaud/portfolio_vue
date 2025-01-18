@@ -1,21 +1,21 @@
-.card{
-    width: 50vh;
-    height: auto;
-    background: linear-gradient(145deg, #121212, #0f0f0f);
-    padding: 2rem;
-    box-shadow:0px 0px 1px rgba(255, 255, 255, 0.606);
-    margin: 2rem;
-    border-radius: 8px;
+.card {
+  width: 500px;
+  max-width: 90vw;
+  height: auto;
+  background: linear-gradient(145deg, #121212, #0f0f0f);
+  padding: 2rem;
+  box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
+  margin: 1rem 0;
+  border-radius: 8px;
 }
 
-
 .small_card {
-    height: 3rem;
-    width: fit-content;
-    padding: 0 1rem;
-    box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+  height: 3rem;
+  width: fit-content;
+  padding: 0 1rem;
+  box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
