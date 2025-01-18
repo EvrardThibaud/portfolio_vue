@@ -8,6 +8,7 @@
       I'm a 20-year-old computer science student with a deep passion for web
       development.
     </p>
+    <i class="fa-solid fa-arrow-up-right-from-square"></i>
   </div>
 </template>
 

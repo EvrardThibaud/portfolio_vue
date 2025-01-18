@@ -23,18 +23,18 @@ function handleCopyEmail() {
     <a
       href="https://www.linkedin.com/in/thibaud-evrard-869431258/"
       target="_blank"
-      class="text-3xl hover"
+      class="text-5xl hover flex"
     >
       <i class="fa-brands fa-linkedin"></i>
     </a>
 
-    <div id="email">
+    <div id="email" @click="handleCopyEmail" class="hover">
       <p :class="['select-none', { 'text-success': email.isCopied }]">
         {{ email.content }}
       </p>
       <i
-        :class="['fa-copy hover', email.isCopied ? 'fa-solid' : 'fa-regular']"
-        @click="handleCopyEmail"
+        :class="['fa-copy', email.isCopied ? 'fa-solid' : 'fa-regular']"
+        
       ></i>
     </div>
   </div>
@@ -42,13 +42,11 @@ function handleCopyEmail() {
 
 <style scoped>
 #email {
-  height: 1.875rem;
-  /* background: linear-gradient(145deg, #121212, #0f0f0f); */
+  height: 3rem;
   padding: 0 1rem;
   box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
   border-radius: 3px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   gap: 0.5rem;
 }
