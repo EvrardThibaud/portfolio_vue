@@ -19,22 +19,25 @@ function handleCopyEmail() {
 </script>
 
 <template>
-  <div class="card flex items-center flex-row flex-wrap gap-2">
-    <a
-      href="https://www.linkedin.com/in/thibaud-evrard-869431258/"
-      target="_blank"
-      class="text-2xl flex"
-    >
-      <div class="small_card">
-        <i class="fa-brands fa-linkedin"></i>
-      </div>
-    </a>
+  <div class="card">
+    <p class="text-2xl font-semibold leading-7">Contact Me</p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <a
+        href="https://www.linkedin.com/in/thibaud-evrard-869431258/"
+        target="_blank"
+        class="text-2xl flex"
+      >
+        <div class="small_card">
+          <i class="fa-brands fa-linkedin"></i>
+        </div>
+      </a>
 
-    <div @click="handleCopyEmail" class="small_card">
-      <p :class="['select-none', { 'text-success': email.isCopied }]">
-        {{ email.content }}
-      </p>
-      <i :class="['fa-copy', email.isCopied ? 'fa-solid' : 'fa-regular']"></i>
+      <div @click="handleCopyEmail" class="small_card">
+        <p :class="['select-none', { 'text-success': email.isCopied }]">
+          {{ email.content }}
+        </p>
+        <i :class="['fa-copy', email.isCopied ? 'fa-solid' : 'fa-regular']"></i>
+      </div>
     </div>
   </div>
 </template>
