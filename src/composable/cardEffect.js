@@ -9,18 +9,23 @@ export function cardEffect(selector) {
       const mouseX = event.clientX - rect.left; 
       const mouseY = event.clientY - rect.top;  
 
-      console.log("X : "+mouseX);
-      console.log("Y : "+mouseY);
-
       const handleMouseMove = (moveEvent) => {
         const mouseMoveX = moveEvent.clientX - rect.left;
         const mouseMoveY = moveEvent.clientY - rect.top;
-        console.log("X : "+mouseMoveX);
-        console.log("Y : "+mouseMoveY);
+
+         const maxX = rect.width; // Largeur de la carte
+        const rotateY = ((mouseMoveX / maxX) - 0.5) * 40; // -20 à 20 en fonction de la position de la souris
+        const rotateX = ((mouseMoveY / rect.height) - 0.5) * 20; // Val
+
+
+        target.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${-rotateY}deg) rotateZ(0deg)`;  
       };
 
       target.addEventListener("mousemove", handleMouseMove);
 
+      target.addEventListener("mouseout", () => {
+        target.style.transform = ""; 
+      });
     }
   };
 

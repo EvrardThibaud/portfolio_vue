@@ -10,27 +10,12 @@
 
   transform-origin: center center 0px;
   transition: all 0.5s ease-out;
-  /* animation-name: animate; */
   animation-duration: 3s;
   animation-iteration-count: infinite;
-  transform: perspective(1000px) rotateX(20deg) rotateY(10deg) rotateZ(-10deg);
   z-index: 1;
+  /* transform: perspective(1000px) rotateX(-30deg) rotateY(0deg) rotateZ(0deg); */
   &:hover {
     animation: unset;
-    /* margin-top: 18vh; */
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  }
-}
-
-@keyframes animate {
-  0% {
-    margin-top: 20vh;
-  }
-  50% {
-    margin-top: 18vh;
-  }
-  100% {
-    margin-top: 20vh;
   }
 }
 
