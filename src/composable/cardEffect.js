@@ -14,8 +14,8 @@ export function cardEffect(selector) {
         const mouseMoveY = moveEvent.clientY - rect.top;
 
          const maxX = rect.width; // Largeur de la carte
-        const rotateY = ((mouseMoveX / maxX) - 0.5) * 40; // -20 à 20 en fonction de la position de la souris
-        const rotateX = ((mouseMoveY / rect.height) - 0.5) * 20; // Val
+        const rotateY = ((mouseMoveX / maxX) - 0.5) * 10; 
+        const rotateX = ((mouseMoveY / rect.height) - 0.5) * 10; 
 
 
         target.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${-rotateY}deg) rotateZ(0deg)`;  
