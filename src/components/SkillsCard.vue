@@ -54,16 +54,18 @@ function handleViewMoreSkills() {
     <div
       id="skillsContainer"
       ref="skillsContainer"
-      class="flex justify-between flex-wrap gap-3 h-24 overflow-hidden my-6 relative"
+      class="flex flex-wrap gap-3 h-20 overflow-hidden mt-6"
     >
       <div
-        class="flex items-center gap-3"
+        class="flex items-center gap-3 flex-grow basis-32"
         v-for="(image, index) in images"
         :key="index"
       >
         <img :src="image.src" :alt="image.alt" />
         <p class="font-semibold">{{ image.alt }}</p>
       </div>
+      <p>sass</p>
+      <p>c</p>
     </div>
 
     <p class="hover" @click="handleViewMoreSkills">
@@ -80,20 +82,10 @@ function handleViewMoreSkills() {
 </template>
 
 <style scoped>
-#skillsContainer::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20px; 
-  background: #0d0d0d; 
-  filter: blur(1px); 
-}
 
 img {
   max-height: 30px;
   max-width: 30px;
-  filter: brightness(1) saturate(0) invert(1);
+  /* filter: brightness(1) saturate(0) invert(1); */
 }
 </style>

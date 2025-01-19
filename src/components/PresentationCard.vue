@@ -9,7 +9,7 @@
       development.
     </p>
     <a href="cv_thibaud_evrard.pdf" target="_blank">
-      <div class="small_card hover mt-2">
+      <div class="small_card mt-2">
         <p>My CV</p>
         <i class="fa-solid fa-arrow-up-right-from-square"></i>
       </div>

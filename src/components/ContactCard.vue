@@ -23,14 +23,14 @@ function handleCopyEmail() {
     <a
       href="https://www.linkedin.com/in/thibaud-evrard-869431258/"
       target="_blank"
-      class="text-2xl hover flex"
+      class="text-2xl flex"
     >
-      <div class="small_card hover">
+      <div class="small_card">
         <i class="fa-brands fa-linkedin"></i>
       </div>
     </a>
 
-    <div @click="handleCopyEmail" class="hover small_card">
+    <div @click="handleCopyEmail" class="small_card">
       <p :class="['select-none', { 'text-success': email.isCopied }]">
         {{ email.content }}
       </p>
