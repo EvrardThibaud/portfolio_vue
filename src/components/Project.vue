@@ -14,16 +14,17 @@ const props = defineProps({
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.src})`,
     }"
   >
+
+  <div class="visible">
     <p class="text-xl">Cards Royale</p>
-    <div class="flex justify-center items-center flex-row gap-2">
+    <div class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2">
       <template v-for="(skill, index) in props.skills" :key="index">
         <Skill class="backdrop-blur-md" :image="skill"></Skill>
       </template>
     </div>
+  </div>
 
-    <div class="button">
-      More info 
-    </div>
+    <div class="button">More info</div>
   </div>
 </template>
 
@@ -48,10 +49,10 @@ const props = defineProps({
   animation-iteration-count: infinite;
   position: relative;
 
-  & > p {
-    transform: translateY(300%);
+  /* .visible {
+    transform: translateY(100%);
     transition: transform 0.5s ease;
-  }
+  } */
 
   & > .button {
     transform: translateY(100%);
@@ -62,7 +63,8 @@ const props = defineProps({
   &:hover {
     cursor: pointer;
 
-    & > p {
+    & > p,
+    & > div {
       transform: translateY(0%);
     }
 
