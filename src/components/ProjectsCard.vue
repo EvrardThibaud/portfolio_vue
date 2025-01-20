@@ -1,5 +1,5 @@
 <script setup>
-import ProjectCard from './Project.vue';
+import ProjectCard from './ProjectCard.vue';
 
 const skills = [
   // { src: "/skills/excel_logo.png", alt: "Excel" },
@@ -20,7 +20,7 @@ const skills = [
 
     <ProjectCard :src="'projects/cardsRoyale/screen1.png'" :skills="skills"></ProjectCard>
     
-    <RouterLink :to="{ name: 'Projects' }" class="hover">
+    <RouterLink :to="{ name: 'projects' }" class="hover">
       All my projects <i class="fa-solid fa-arrow-right"></i>
     </RouterLink>
   </div>

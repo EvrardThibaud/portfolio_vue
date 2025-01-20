@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <RouterLink :to="{ name: 'Home' }"> Home </RouterLink>
-  <RouterLink :to="{ name: 'Projects' }"> Projects </RouterLink>
+  <RouterLink :to="{ name: 'home' }"> Home </RouterLink>
+  <RouterLink :to="{ name: 'projects' }"> Projects </RouterLink>
 </template>
 
 <style scoped></style>

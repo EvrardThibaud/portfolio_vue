@@ -8,24 +8,34 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    class="project_card"
-    :style="{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.src})`,
+  <RouterLink
+    :to="{
+      name: 'project',
+      params: {
+        name: 'cards-royale',
+      },
     }"
   >
+    <div
+      class="project_card"
+      :style="{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.src})`,
+      }"
+    >
+      <div class="visible">
+        <p class="text-xl font-bold">Cards Royale</p>
+        <div
+          class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2"
+        >
+          <template v-for="(skill, index) in props.skills" :key="index">
+            <Skill class="backdrop-blur-md" :image="skill"></Skill>
+          </template>
+        </div>
+      </div>
 
-  <div class="visible">
-    <p class="text-xl">Cards Royale</p>
-    <div class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2">
-      <template v-for="(skill, index) in props.skills" :key="index">
-        <Skill class="backdrop-blur-md" :image="skill"></Skill>
-      </template>
+      <div class="button">More info</div>
     </div>
-  </div>
-
-    <div class="button">More info</div>
-  </div>
+  </RouterLink>
 </template>
 
 <style scoped>
@@ -49,10 +59,10 @@ const props = defineProps({
   animation-iteration-count: infinite;
   position: relative;
 
-  /* .visible {
+  .visible {
     transform: translateY(100%);
     transition: transform 0.5s ease;
-  } */
+  }
 
   & > .button {
     transform: translateY(100%);

@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="">
+  <div>
     <img :src="image.src" :alt="image.alt" />
     <p class="font-semibold text-nowrap">{{ image.alt }}</p>
   </div>

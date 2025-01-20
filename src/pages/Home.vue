@@ -2,7 +2,7 @@
     import PresentationCard from '../components/Presentation.vue';
     import ContactCard from '../components/Contact.vue';
     import SkillsCard from '../components/SkillsCard.vue';
-    import ProjectsCard from '../components/Projects.vue';
+    import ProjectsCard from '../components/ProjectsCard.vue';
 </script>
 
 <template>
