@@ -61,6 +61,9 @@ function handleViewMoreSkills() {
       </div>
       <p>sass</p>
       <p>c</p>
+      <p>tailwind</p>
+      <p>wordpress</p>
+      <p>figma</p>
     </div>
 
     <p class="hover w-fit" @click="handleViewMoreSkills">
@@ -77,7 +80,6 @@ function handleViewMoreSkills() {
 </template>
 
 <style scoped>
-
 img {
   max-height: 30px;
   max-width: 30px;
