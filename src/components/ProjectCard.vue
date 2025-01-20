@@ -12,7 +12,9 @@ const props = defineProps({
     :to="{
       name: 'project',
       params: {
-        name: 'cards-royale',
+        name: 'cards royale',
+        src: props.src,
+        skills: JSON.stringify(props.skills) 
       },
     }"
   >
