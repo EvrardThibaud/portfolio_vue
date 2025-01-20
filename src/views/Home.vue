@@ -2,6 +2,7 @@
     import PresentationCard from '../components/PresentationCard.vue';
     import ContactCard from '../components/ContactCard.vue';
     import SkillsCard from '../components/SkillsCard.vue';
+    import ProjectsCard from '../components/ProjectsCard.vue';
 </script>
 
 <template>
@@ -11,6 +12,8 @@
     <ContactCard></ContactCard>
 
     <SkillsCard></SkillsCard>
+
+    <ProjectsCard></ProjectsCard>
 
 </template>
 

@@ -26,10 +26,14 @@
   align-items: center;
   gap: 0.5rem;
   transition-duration: 0.2s;
-
+  
   &:hover {
     background-color: #ffffff0d;
     cursor: pointer;
-    
+  }
+  
+  &:active{
+    box-shadow: 0px 0px 1px #0000009b;
+    /* box-shadow: none; */
   }
 }

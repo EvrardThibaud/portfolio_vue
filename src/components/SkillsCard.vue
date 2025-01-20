@@ -46,11 +46,6 @@ function handleViewMoreSkills() {
 <template>
   <div class="card">
     <p class="text-2xl font-semibold leading-7">My Skills</p>
-    <!-- <p class="text-justify pt-2 leading-4 text-sm">
-      Here are the tools, languages, and frameworks I am proficient in,
-      showcasing my expertise in web development and software engineering.
-    </p> -->
-
     <div
       id="skillsContainer"
       ref="skillsContainer"
@@ -68,7 +63,7 @@ function handleViewMoreSkills() {
       <p>c</p>
     </div>
 
-    <p class="hover" @click="handleViewMoreSkills">
+    <p class="hover w-fit" @click="handleViewMoreSkills">
       View {{ viewMoreContent }}
       <i
         :class="
