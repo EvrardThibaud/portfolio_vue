@@ -10,7 +10,7 @@
     </p>
     <div class="mt-4 flex flex-wrap gap-2">
       <a href="cv_thibaud_evrard.pdf" target="_blank">
-        <div class="small_card">
+        <div class="button">
           <p>My CV</p>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
@@ -20,7 +20,7 @@
         target="_blank"
         class="text-2xl flex"
       >
-        <div class="small_card">
+        <div class="button">
           <i class="fa-brands fa-github"></i>
         </div>
       </a>

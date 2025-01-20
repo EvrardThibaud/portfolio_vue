@@ -16,8 +16,8 @@
   }
 }
 
-.small_card {
-  height: 3rem;
+.button {
+  min-height: 3rem;
   width: fit-content;
   padding: 0 1rem;
   box-shadow: 0px 0px 1px #ffffff9b;

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Skill from "./Skill.vue";
 const images = [
   { src: "/skills/vue_logo.png", alt: "Vue.js" },
   { src: "/skills/react_logo.png", alt: "React" },
@@ -49,15 +50,14 @@ function handleViewMoreSkills() {
     <div
       id="skillsContainer"
       ref="skillsContainer"
-      class="flex flex-wrap gap-3 h-20 overflow-hidden mt-6"
+      class="flex flex-wrap gap-2 p-2 h-20 overflow-hidden mt-6"
     >
       <div
-        class="flex items-center gap-3 flex-grow basis-32"
+        class="flex-1"
         v-for="(image, index) in images"
         :key="index"
       >
-        <img :src="image.src" :alt="image.alt" />
-        <p class="font-semibold">{{ image.alt }}</p>
+        <Skill :image="image"></Skill>
       </div>
       <p>sass</p>
       <p>c</p>
@@ -80,9 +80,5 @@ function handleViewMoreSkills() {
 </template>
 
 <style scoped>
-img {
-  max-height: 30px;
-  max-width: 30px;
-  /* filter: brightness(1) saturate(0) invert(1); */
-}
+
 </style>

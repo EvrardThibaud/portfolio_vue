@@ -27,12 +27,12 @@ function handleCopyEmail() {
         target="_blank"
         class="text-2xl flex"
       >
-        <div class="small_card">
+        <div class="button">
           <i class="fa-brands fa-linkedin"></i>
         </div>
       </a>
 
-      <div @click="handleCopyEmail" class="small_card">
+      <div @click="handleCopyEmail" class="button">
         <p :class="['select-none', { 'text-success': email.isCopied }]">
           {{ email.content }}
         </p>

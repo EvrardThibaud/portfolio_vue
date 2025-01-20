@@ -1,8 +1,8 @@
 <script setup>
-    import PresentationCard from '../components/PresentationCard.vue';
-    import ContactCard from '../components/ContactCard.vue';
+    import PresentationCard from '../components/Presentation.vue';
+    import ContactCard from '../components/Contact.vue';
     import SkillsCard from '../components/SkillsCard.vue';
-    import ProjectsCard from '../components/ProjectsCard.vue';
+    import ProjectsCard from '../components/Projects.vue';
 </script>
 
 <template>
