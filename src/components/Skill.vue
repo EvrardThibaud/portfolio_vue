@@ -2,19 +2,18 @@
 import { defineProps, ref } from "vue";
 
 const props = defineProps({
-  image: Object,
+  skill: Object,
 });
 </script>
 
 <template>
   <div>
-    <img :src="image.src" :alt="image.alt" />
-    <p class="font-semibold text-nowrap">{{ image.alt }}</p>
+    <img :src="skill.src" :alt="skill.alt" />
+    <p class="font-semibold text-nowrap">{{ skill.name }}</p>
   </div>
 </template>
 
 <style scoped>
-
 div {
   display: flex;
   align-items: center;
