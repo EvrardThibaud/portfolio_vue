@@ -12,7 +12,7 @@ const routes = [
     component: () => import("./pages/Projects.vue"),
   },
   {
-    path: "/project/:name:skills:src",
+    path: "/project/:id",
     name: "project",
     component: () => import("./pages/Project.vue"),
   },

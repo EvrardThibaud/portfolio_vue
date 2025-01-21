@@ -1,9 +1,16 @@
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps, ref, computed } from "vue";
 import Skill from "./Skill.vue";
+const skills = JSON.parse(localStorage.getItem("skills")) || [];
+const filteredSkills = computed(() => {
+  return skills.filter((skill) =>
+    props.project.skills.some(
+      (projectSkill) => projectSkill === skill.name
+    )
+  );
+});
 const props = defineProps({
-  src: String,
-  skills: Array,
+  project: Object,
 });
 </script>
 
@@ -12,25 +19,23 @@ const props = defineProps({
     :to="{
       name: 'project',
       params: {
-        name: 'cards royale',
-        src: props.src,
-        skills: JSON.stringify(props.skills),
+        id: props.project.id,
       },
     }"
   >
     <div
       class="project_card"
       :style="{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.src})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.project.src[0]})`,
       }"
     >
       <div class="visible">
-        <p class="text-xl font-bold">Cards Royale</p>
+        <p class="text-xl font-bold">{{ project.name }}</p>
         <div
           class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2"
         >
-          <template v-for="(skill, index) in props.skills" :key="index">
-            <Skill class="backdrop-blur-md" :image="skill"></Skill>
+          <template v-for="(skill, index) in filteredSkills.slice(0, 3)" :key="index">
+            <Skill class="backdrop-blur-md" :skill="skill"></Skill>
           </template>
         </div>
       </div>
