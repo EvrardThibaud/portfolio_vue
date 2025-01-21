@@ -14,7 +14,7 @@ const props = defineProps({
       params: {
         name: 'cards royale',
         src: props.src,
-        skills: JSON.stringify(props.skills) 
+        skills: JSON.stringify(props.skills),
       },
     }"
   >
@@ -50,7 +50,7 @@ const props = defineProps({
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
-  height: 20rem;
+  height: 18rem;
   padding: 2rem;
   box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
   margin: 1rem 0;

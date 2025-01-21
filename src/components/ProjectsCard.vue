@@ -1,17 +1,7 @@
 <script setup>
 import ProjectCard from './ProjectCard.vue';
 
-const skills = [
-  // { src: "/skills/excel_logo.png", alt: "Excel" },
-  { src: "/skills/pgadmin4_logo.png", alt: "pgAdmin" },
-  { src: "/skills/php_logo.png", alt: "PHP" },
-  // { src: "/skills/html_logo.png", alt: "HTML" },
-  // { src: "/skills/vscode_logo.png", alt: "VS Code" },
-  // { src: "/skills/sql_logo.png", alt: "SQL" },
-  // { src: "/skills/css_logo.png", alt: "CSS" },
-  { src: "/skills/js_logo.png", alt: "JavaScript" },
-  // { src: "/skills/github_logo.png", alt: "GitHub" },  
-];
+
 </script>
 
 <template>
