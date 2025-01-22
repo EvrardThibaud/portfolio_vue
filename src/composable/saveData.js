@@ -32,14 +32,27 @@ export function saveData() {
         "PowerAMC",
         "Laravel",
         "Azure DevOps",
-        "Azure DevOps"
+        "pgAdmin",
+        "PHP",
+        "JavaScript",
+        "CSS",
+        "GitHub",
+        "SQL",
+        "VS Code",
+        "HTML",
+        "Excel",
       ],
       dsc: "HelpHub is a school project that took place during the first semester of my second year in computer science studies. I was part of a group of four students working on this project. The objective was to create a website where associations could post volunteering or donation opportunities, and anyone could volunteer their help to any association. Initially, we created diagrams (BPMN) for project and team organization. Following that, we developed the database diagram using Merise. Simultaneously, we generated a dataset using Excel and generatedata.com to populate our database with SQL. To enhance our project's analytical capabilities, we used Power BI to simulate statistics with our dataset. We then delved into website development using Laravel, implementing Breeze to set up the authentication system.Additionally, we addressed the legal aspects of the website, including cookies, GDPR compliance, Privacy Policy, and Terms of Use. We adopted the Scrum agile methodology with sprint reviews. As of the current writing in December 2023, the project is not yet complete. We still need to finish the website, implement the cryptography part for security, and create the communication section, which includes a user guide.This project provided me with valuable insights and a practical understanding of how to approach a project, similar to what I might encounter in a professional setting. It taught me how to work effectively in a team, follow agile methods, manage deadlines, and handle multiple tasks simultaneously. Furthermore, it enhanced my skills with various software tools and programming languages that we utilized.",
       github: [],
     },
   ];
 
-  localStorage.setItem("projects", JSON.stringify(projects));
+  if (
+    !localStorage.getItem("projects") ||
+    JSON.stringify(projects) !== localStorage.getItem("projects")
+  ) {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }
 
   const skills = [
     { id: 1, src: "/skills/vue_logo.png", name: "Vue.js", alt: "Vue.js Logo" },
@@ -175,5 +188,10 @@ export function saveData() {
     },
   ];
 
-  localStorage.setItem("skills", JSON.stringify(skills));
+  if (
+    !localStorage.getItem("skills") ||
+    JSON.stringify(skills) !== localStorage.getItem("skills")
+  ) {
+    localStorage.setItem("skills", JSON.stringify(skills));
+  }
 }
