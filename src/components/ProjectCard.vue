@@ -3,12 +3,11 @@ import { defineProps, ref, computed } from "vue";
 import Skill from "./Skill.vue";
 const skills = JSON.parse(localStorage.getItem("skills")) || [];
 const filteredSkills = computed(() => {
-  return skills.filter((skill) =>
-    props.project.skills.some(
-      (projectSkill) => projectSkill === skill.name
-    )
-  );
+  return props.project.skills
+    .map((projectSkill) => skills.find((skill) => skill.name === projectSkill))
+    .filter((skill) => skill !== undefined);
 });
+
 const props = defineProps({
   project: Object,
 });
@@ -34,7 +33,10 @@ const props = defineProps({
         <div
           class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2"
         >
-          <template v-for="(skill, index) in filteredSkills.slice(0, 3)" :key="index">
+          <template
+            v-for="(skill, index) in filteredSkills.slice(0, 3)"
+            :key="index"
+          >
             <Skill class="backdrop-blur-md" :skill="skill"></Skill>
           </template>
         </div>
