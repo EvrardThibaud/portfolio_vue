@@ -27,9 +27,9 @@ watch(viewMore, (newValue) => {
         viewMore ? '' : 'h-20 overflow-hidden',
       ]"
     >
-      <div class="flex-1" v-for="(skill, index) in skills" :key="index">
-        <Skill :skill="skill"></Skill>
-      </div>
+      <template  v-for="(skill, index) in skills" :key="index">
+        <Skill class="flex-1" :skill="skill"></Skill>
+      </template>
       <p>sass</p>
       <p>c</p>
       <p>tailwind</p>
@@ -37,14 +37,10 @@ watch(viewMore, (newValue) => {
       <p>figma</p>
     </div>
 
-    <p class="hover w-fit" @click="(viewMore = !viewMore)">
-      View {{ viewMore ? 'less' : "more" }}
+    <p class="hover w-fit" @click="viewMore = !viewMore">
+      View {{ viewMore ? "less" : "more" }}
       <i
-        :class="
-          viewMore
-          ? 'fa-solid fa-angles-up'
-          : 'fa-solid fa-angles-down'
-        "
+        :class="viewMore ? 'fa-solid fa-angles-up' : 'fa-solid fa-angles-down'"
       ></i>
     </p>
   </div>

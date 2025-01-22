@@ -21,29 +21,26 @@ const props = defineProps({
         id: props.project.id,
       },
     }"
+    class="project_card"
+    :style="{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.project.src[0]})`,
+    }"
   >
-    <div
-      class="project_card"
-      :style="{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${props.project.src[0]})`,
-      }"
-    >
-      <div class="visible">
-        <p class="text-xl font-bold">{{ project.name }}</p>
-        <div
-          class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2"
+    <div class="visible">
+      <p class="text-xl font-bold">{{ project.name }}</p>
+      <div
+        class="flex justify-center items-center flex-row flex-wrap gap-2 mt-2 w-full"
+      >
+        <template
+          v-for="(skill, index) in filteredSkills.slice(0, 3)"
+          :key="index"
         >
-          <template
-            v-for="(skill, index) in filteredSkills.slice(0, 3)"
-            :key="index"
-          >
-            <Skill class="backdrop-blur-md" :skill="skill"></Skill>
-          </template>
-        </div>
+          <Skill class="flex-1 backdrop-blur-md" :skill="skill"></Skill>
+        </template>
       </div>
-
-      <div class="button">More info</div>
     </div>
+
+    <div class="button">More info</div>
   </RouterLink>
 </template>
 
@@ -58,6 +55,8 @@ const props = defineProps({
   background-position: center;
   overflow: hidden;
   height: 18rem;
+  width: 500px;
+  max-width: min(100%, 90vw);
   padding: 2rem;
   box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
   margin: 1rem 0;
@@ -67,27 +66,25 @@ const props = defineProps({
   animation-duration: 3s;
   animation-iteration-count: infinite;
   position: relative;
+  cursor: pointer;
 
   .visible {
     transform: translateY(100%);
     transition: transform 0.5s ease;
   }
 
-  & > .button {
+  & .button {
     transform: translateY(100%);
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
 
   &:hover {
-    cursor: pointer;
-
-    & > p,
-    & > div {
+    .visible {
       transform: translateY(0%);
     }
 
-    & > .button {
+    & .button {
       transform: translateY(0);
       opacity: 1;
     }

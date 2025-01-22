@@ -21,6 +21,7 @@ const filteredSkills = computed(() => {
 </script>
 
 <template>
+  
   <p>{{ project.name }}</p>
   <p>{{ project.dsc }}</p>
 
