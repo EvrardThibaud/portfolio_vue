@@ -5,10 +5,11 @@ import Footer from "./components/Footer.vue";
 
 <template>
   <Navbar></Navbar>
-  <main class="flex flex-col items-center ">
+  <main class="flex flex-col items-center">
     <RouterView></RouterView>
   </main>
   <Footer></Footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

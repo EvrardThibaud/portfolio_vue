@@ -21,25 +21,31 @@ const filteredSkills = computed(() => {
 </script>
 
 <template>
-  
-  <p>{{ project.name }}</p>
-  <p>{{ project.dsc }}</p>
+  <div class="container">
+    <p>{{ project.name }}</p>
+    <p>{{ project.dsc }}</p>
 
-  <template v-for="(skill, index) in filteredSkills" :key="index">
-    <Skill class="backdrop-blur-md" :skill="skill"></Skill>
-  </template>
+    <template v-for="(skill, index) in filteredSkills" :key="index">
+      <Skill class="backdrop-blur-md" :skill="skill"></Skill>
+    </template>
 
-  <template v-for="(link, index) in project.github" :key="index">
-    <a :href="link" target="_blank" class="text-2xl flex">
-      <div class="button">
-        <p>Rep {{ index + 1 }}</p>
-        <i class="fa-brands fa-github"></i>
-      </div>
-    </a>
-  </template>
-  <template v-for="(src, index) in project.src" :key="index">
-    <img :src="src" :alt="project.name + ' ' + index" />
-  </template>
+    <template v-for="(link, index) in project.github" :key="index">
+      <a :href="link" target="_blank" class="text-2xl flex">
+        <div class="button">
+          <p>Rep {{ index + 1 }}</p>
+          <i class="fa-brands fa-github"></i>
+        </div>
+      </a>
+    </template>
+    <template v-for="(src, index) in project.src" :key="index">
+      <img :src="src" :alt="project.name + ' ' + index" />
+    </template>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  width: 500px;
+  max-width: 90vw;
+}
+</style>
