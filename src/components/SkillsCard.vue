@@ -35,6 +35,7 @@ watch(viewMore, (newValue) => {
       <p>tailwind</p>
       <p>wordpress</p>
       <p>figma</p>
+      <p>DaisyUi</p>
     </div>
 
     <p class="hover w-fit" @click="viewMore = !viewMore">

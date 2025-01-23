@@ -25,17 +25,19 @@ const filteredSkills = computed(() => {
 <template>
   <div class="container">
     <p class="text-3xl font-semibold">{{ project.name }}</p>
-    <p
-      :class="[
-        'text-justify text-ellipsis overflow-hidden mt-5',
-        viewMore ? '' : 'project_description ',
-      ]"
-    >
-      {{ project.dsc }}
-    </p>
-    <p class="hover w-fit mt-1 select-none" @click="viewMore = !viewMore">
-      View {{ viewMore ? "Less" : "More" }}
-    </p>
+    <div v-if="project.dsc">
+      <p
+        :class="[
+          'text-justify text-ellipsis overflow-hidden mt-5',
+          viewMore ? '' : 'project_description ',
+        ]"
+      >
+        {{ project.dsc }}
+      </p>
+      <p class="hover w-fit mt-1 select-none" @click="viewMore = !viewMore">
+        View {{ viewMore ? "Less" : "More" }}
+      </p>
+    </div>
 
     <div class="flex flex-wrap gap-2 py-2 px-1 my-3">
       <template v-for="(skill, index) in filteredSkills" :key="index">
@@ -56,14 +58,17 @@ const filteredSkills = computed(() => {
     <p v-if="project.github.length > 1" class="opacity-75 mb-3">
       This project has {{ project.github.length }} versions.
     </p>
-    <p v-else-if="project.github.length == 0" class="opacity-75 text-center">
+    <p
+      v-else-if="project.github.length == 0"
+      class="opacity-75 text-center mb-3"
+    >
       Unfortunately, the source code of this project is not available.
     </p>
     <template v-if="project.src.length > 0">
       <p class="text-xl font-semibold">Project Screenshots</p>
     </template>
     <template v-else
-      ><p class="opacity-75 text-center">
+      ><p class="opacity-75 text-center my-3">
         Unfortunately, there are no screenshots for this project.
       </p></template
     >
