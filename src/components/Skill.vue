@@ -9,7 +9,7 @@ const props = defineProps({
 <template>
   <div>
     <img :src="skill.src" :alt="skill.alt" />
-    <p class="font-semibold text-nowrap">{{ skill.name }}</p>
+    <p class="font-semibold text-nowrap select-none">{{ skill.name }}</p>
   </div>
 </template>
 

@@ -5,6 +5,8 @@ import Skill from "../components/Skill.vue";
 
 const route = useRoute();
 
+const viewMore = ref(false);
+
 const projects = JSON.parse(localStorage.getItem("projects")) || [];
 const project = computed(() => {
   return projects.find((proj) => proj.id == route.params.id);
@@ -22,23 +24,55 @@ const filteredSkills = computed(() => {
 
 <template>
   <div class="container">
-    <p>{{ project.name }}</p>
-    <p>{{ project.dsc }}</p>
+    <p class="text-3xl font-semibold">{{ project.name }}</p>
+    <p
+      :class="[
+        'text-justify text-ellipsis overflow-hidden mt-5',
+        viewMore ? '' : 'project_description ',
+      ]"
+    >
+      {{ project.dsc }}
+    </p>
+    <p class="hover w-fit mt-1 select-none" @click="viewMore = !viewMore">
+      View {{ viewMore ? "Less" : "More" }}
+    </p>
 
-    <template v-for="(skill, index) in filteredSkills" :key="index">
-      <Skill class="backdrop-blur-md" :skill="skill"></Skill>
-    </template>
+    <div class="flex flex-wrap gap-2 py-2 px-1 my-3">
+      <template v-for="(skill, index) in filteredSkills" :key="index">
+        <Skill :skill="skill"></Skill>
+      </template>
+    </div>
 
-    <template v-for="(link, index) in project.github" :key="index">
-      <a :href="link" target="_blank" class="text-2xl flex">
+    <div class="flex gap-2 flex-wrap">
+      <template v-for="(link, index) in project.github" :key="index">
         <div class="button">
-          <p>Rep {{ index + 1 }}</p>
-          <i class="fa-brands fa-github"></i>
+          <a :href="link" target="_blank" class="flex items-center gap-2">
+            <p>View on github</p>
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
-      </a>
+      </template>
+    </div>
+    <p v-if="project.github.length > 1" class="opacity-75 mb-3">
+      This project has {{ project.github.length }} versions.
+    </p>
+    <p v-else-if="project.github.length == 0" class="opacity-75 text-center">
+      Unfortunately, the source code of this project is not available.
+    </p>
+    <template v-if="project.src.length > 0">
+      <p class="text-xl font-semibold">Project Screenshots</p>
     </template>
+    <template v-else
+      ><p class="opacity-75 text-center">
+        Unfortunately, there are no screenshots for this project.
+      </p></template
+    >
     <template v-for="(src, index) in project.src" :key="index">
-      <img :src="src" :alt="project.name + ' ' + index" />
+      <img
+        :src="src"
+        :alt="project.name + ' ' + index"
+        class="w-full my-2 rounded"
+      />
     </template>
   </div>
 </template>
@@ -47,5 +81,15 @@ const filteredSkills = computed(() => {
 .container {
   width: 500px;
   max-width: 90vw;
+}
+
+.project_description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+img {
+  box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
 }
 </style>

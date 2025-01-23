@@ -38,7 +38,7 @@ watch(viewMore, (newValue) => {
     </div>
 
     <p class="hover w-fit" @click="viewMore = !viewMore">
-      View {{ viewMore ? "less" : "more" }}
+      View {{ viewMore ? "Less" : "More" }}
       <i
         :class="viewMore ? 'fa-solid fa-angles-up' : 'fa-solid fa-angles-down'"
       ></i>
