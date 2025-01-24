@@ -11,7 +11,7 @@ saveData()
 
 const app = createApp(App);
 
-cardEffect('.card');
+// cardEffect('.card');
 
 app.use(router);
 app.mount("#app");

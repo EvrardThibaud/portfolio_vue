@@ -10,6 +10,7 @@ const projects = ref(JSON.parse(localStorage.getItem("projects")) || []);
     <p class="text-2xl font-semibold leading-7">My Projects</p>
 
     <ProjectCard :project="projects[0]"></ProjectCard>
+    <ProjectCard :project="projects[2]"></ProjectCard>
 
     <RouterLink :to="{ name: 'projects' }" class="hover">
       All my projects <i class="fa-solid fa-arrow-right"></i>

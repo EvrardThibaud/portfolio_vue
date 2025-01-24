@@ -17,7 +17,6 @@ export function saveData() {
         "SQL",
         "CSS",
         "GitHub",
-        "Excel",
       ],
       dsc: "Cards Royale is a personal project that I developed from scratch. The concept of the game involves searching for a specific card from the game Clash Royale by making educated guesses. With each guess, players receive feedback on whether the characteristics of their guess match those of the target card. As the game progresses, players receive additional clues to help them identify the correct card. I got inspired to create this game after encountering a similar one based on characters from another game. I decided to customize it to Cards Royale and started by collecting all the necessary data. I organized the data in an Excel spreadsheet and then created a database using PgAdmin4, populating it with the information from Excel. The development process involved coding the game's functionality and subsequently designing the website's visuals. I prioritized enhancing the user experience, and as of December 2023, the website is almost complete, with just a few minor details remaining. At this point, the game is fully playable. Throughout this project, I delved into PHP, gaining exposure to it just before formal education on the subject at school. Additionally, I honed my skills in code debugging within the browser console. I thoroughly enjoyed crafting the game's interface and implementing various user experience improvements. Notably, I incorporated AJAX into the backend after learning about it in school, further enhancing the project's capabilities. Overall, this endeavor has been a valuable learning experience, allowing me to explore new technologies, improve my coding skills, and create an engaging game interface.",
       github: [
@@ -49,7 +48,7 @@ export function saveData() {
     {
       id: 3,
       name: "Fifa Store",
-      src: [],
+      src: ["/projects/fifa/screen1.png"],
       skills: [
         "Vue.js",
         "Vite",
@@ -66,9 +65,40 @@ export function saveData() {
       ],
       dsc: "",
       github: [
-        "https://github.com/GaelleLabauve/SAE401_FIFA",
-        "https://github.com/CordellierPaul/SAE401_FIFA_FRONT",
+        "https://github.com/EvrardThibaud/SAE401_FIFA",
+        "https://github.com/EvrardThibaud/SAE401_FIFA_BACK",
+        "https://github.com/EvrardThibaud/SAE401_FIFA_FRONT",
       ],
+    },
+    {
+      id: 4,
+      name: "EventPlanner+",
+      src: [
+        "/projects/eventPlanner/screen1.png",
+        "/projects/eventPlanner/screen2.png",
+        "/projects/eventPlanner/screen3.png",
+        "/projects/eventPlanner/screen4.png",
+        "/projects/eventPlanner/screen5.png",
+        "/projects/eventPlanner/screen6.png",
+        "/projects/eventPlanner/screen7.png",
+        "/projects/eventPlanner/screen8.png",
+        "/projects/eventPlanner/screen9.png",
+      ],
+      skills: [
+        "Vue.js",
+        "Vite",
+        "Node.js",
+        "JavaScript",
+        "CSS",
+        "GitHub",
+        "VS Code",
+        "HTML",
+        "Sass",
+        "TailWind",
+        "DaisyUi",
+      ],
+      dsc: "",
+      github: ["https://github.com/EvrardThibaud/event-planner"],
     },
   ];
 
