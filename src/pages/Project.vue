@@ -83,11 +83,6 @@ const filteredSkills = computed(() => {
 </template>
 
 <style scoped>
-.container {
-  width: 500px;
-  max-width: 90vw;
-}
-
 .project_description {
   display: -webkit-box;
   -webkit-line-clamp: 3;

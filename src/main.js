@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import "./style.css";
 import "./style/card.css";
 import "./style/button.css";
+import "./style/container.css";
 import App from "./App.vue";
 import router from "./router";
 import { cardEffect } from './composable/cardEffect';

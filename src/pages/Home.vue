@@ -10,7 +10,7 @@
 
     <SkillsCard></SkillsCard>
 
-    <ProjectsCard></ProjectsCard>
+    <!-- <ProjectsCard></ProjectsCard> -->
 
 </template>
 
