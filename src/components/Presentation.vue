@@ -27,13 +27,15 @@ function handleCopyEmail() {
       I'm a 20-years-old computer science student with a deep passion for web
       development.
     </p>
-    <div class="mt-4 flex flex-wrap gap-2">
+
+    <div class="mt-4 flex justify-between flex-wrap gap-2 ">
       <a href="cv_thibaud_evrard.pdf" target="_blank">
         <div class="button">
           <p>My CV</p>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
       </a>
+
       <a
         href="https://github.com/EvrardThibaud"
         target="_blank"
