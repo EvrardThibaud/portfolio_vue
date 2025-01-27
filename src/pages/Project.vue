@@ -73,7 +73,7 @@ const filteredSkills = computed(() => {
     </p>
 
     <template v-if="project.src.length > 0">
-      <p class="text-xl font-semibold my-3">Project Screenshots</p>
+      <p class="text-xl font-semibold mt-6 mb-3">Project Screenshots</p>
       <div class="button" ref="screenshots" @click="handleViewScreenshots">
         <template
           v-for="(src, index) in showingScreenshot
