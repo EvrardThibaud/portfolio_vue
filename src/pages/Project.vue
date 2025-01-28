@@ -10,7 +10,6 @@ const screenshots = ref(null);
 const showingScreenshot = ref(false);
 
 function handleViewScreenshots() {
-  screenshots.value.classList.toggle("smooth-transition");
   showingScreenshot.value = !showingScreenshot.value;
 }
 
@@ -75,45 +74,54 @@ const filteredSkills = computed(() => {
     <template v-if="project.src.length > 0">
       <p class="text-xl font-semibold mt-6 mb-3">Project Screenshots</p>
       <div class="button" ref="screenshots" @click="handleViewScreenshots">
-        <template
-          v-for="(src, index) in showingScreenshot
-            ? project.src
-            : project.src.slice(0, 3)"
-          :key="index"
-        >
+        <template v-for="(src, index) in project.src.slice(0, 3)" :key="index">
           <img
             :src="src"
             :alt="project.name + ' ' + index"
             class="size-10 rounded"
           />
         </template>
-        <p v-if="project.src.length > 3 && !showingScreenshot">
-          + {{ project.src.length - 3 }}
-        </p>
+        <p v-if="project.src.length > 3">+ {{ project.src.length - 3 }}</p>
       </div>
     </template>
 
     <template v-else
       ><p class="opacity-75 text-center my-3">
         Unfortunately, there are no screenshots for this project.
-      </p></template
-    >
+      </p>
+    </template>
+
+    <template  v-if="showingScreenshot">
+      <div class="gallery">
+        <template
+         
+          v-for="(src, index) in project.src"
+          :key="index"
+        >
+          <img :src="src" :alt="project.name + ' ' + index" />
+        </template>
+      </div>
+    </template>
   </div>
 </template>
 
 <style scoped>
-.smooth-transition {
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  left: 50%; 
-  top: 50%;
+  background-color: red;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
   z-index: 10;
-  width: 70%;
   overflow-x: auto;
-  transform: translate(-50%, -50%);
-  scroll-snap-type: x mandatory;  
-  scroll-behavior: smooth; 
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 
-  &:hover{
+  &:hover {
     cursor: default;
   }
 
