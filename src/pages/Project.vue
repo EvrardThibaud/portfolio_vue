@@ -8,6 +8,13 @@ const route = useRoute();
 const viewMore = ref(false);
 const screenshots = ref(null);
 const showingScreenshot = ref(false);
+const currentImage =ref(0);
+
+function handleChangeCurrentImage(value) {
+  currentImage.value += value;
+  if (currentImage.value < 0) currentImage.value = project.value.src.length - 1;
+  if (currentImage.value >= project.value.src.length) currentImage.value = 0;
+}
 
 function handleViewScreenshots() {
   showingScreenshot.value = !showingScreenshot.value;
@@ -91,15 +98,22 @@ const filteredSkills = computed(() => {
       </p>
     </template>
 
-    <template  v-if="showingScreenshot">
+    <template v-if="showingScreenshot">
       <div class="gallery">
-        <template
-         
-          v-for="(src, index) in project.src"
-          :key="index"
-        >
-          <img :src="src" :alt="project.name + ' ' + index" />
-        </template>
+        <div class="gallery_slider">
+          <button @click="handleChangeCurrentImage(-1)">gauche</button>
+          <img :src="project.src[currentImage]" :alt="project.name + ' ' + index" />
+          <button  @click="handleChangeCurrentImage(1)">droite</button>
+        </div>
+        <div class="button" ref="screenshots">
+          <template v-for="(src, index) in project.src" :key="index">
+            <img
+              :src="src"
+              :alt="project.name + ' ' + index"
+              :class='"size-10 rounded " + (index == currentImage ? "border-2 border-white" : "")'
+            />
+          </template>
+        </div>
       </div>
     </template>
   </div>
@@ -110,8 +124,8 @@ const filteredSkills = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   position: absolute;
-  background-color: red;
   width: 100vw;
   height: 100vh;
   left: 0;
@@ -125,10 +139,16 @@ const filteredSkills = computed(() => {
     cursor: default;
   }
 
-  & > img {
-    height: 70vh;
-    scroll-snap-align: center;
-    width: auto;
+  .gallery_slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > img {
+      height: 70vh;
+      scroll-snap-align: center;
+      width: auto;
+    }
   }
 }
 
