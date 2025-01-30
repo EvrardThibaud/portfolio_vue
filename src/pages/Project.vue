@@ -8,10 +8,10 @@ const route = useRoute();
 const viewMore = ref(false);
 const screenshots = ref(null);
 const showingScreenshot = ref(false);
-const currentImage =ref(0);
+const currentImage = ref(0);
 
 function handleChangeCurrentImage(value) {
-  currentImage.value += value;
+  currentImage.value = value;
   if (currentImage.value < 0) currentImage.value = project.value.src.length - 1;
   if (currentImage.value >= project.value.src.length) currentImage.value = 0;
 }
@@ -51,13 +51,11 @@ const filteredSkills = computed(() => {
         View {{ viewMore ? "Less" : "More" }}
       </p>
     </div>
-
     <div v-if="project.skills" class="flex flex-wrap gap-2 py-2 px-1 my-3">
       <template v-for="(skill, index) in filteredSkills" :key="index">
         <Skill :skill="skill"></Skill>
       </template>
     </div>
-
     <div v-if="project.github" class="flex gap-2 flex-wrap">
       <template v-for="(link, index) in project.github" :key="index">
         <div class="button">
@@ -101,16 +99,27 @@ const filteredSkills = computed(() => {
     <template v-if="showingScreenshot">
       <div class="gallery">
         <div class="gallery_slider">
-          <button @click="handleChangeCurrentImage(-1)">gauche</button>
-          <img :src="project.src[currentImage]" :alt="project.name + ' ' + index" />
-          <button  @click="handleChangeCurrentImage(1)">droite</button>
+          <button @click="handleChangeCurrentImage(currentImage - 1)">
+            gauche
+          </button>
+          <img
+            :src="project.src[currentImage]"
+            :alt="project.name + ' ' + index"
+          />
+          <button @click="handleChangeCurrentImage(currentImage + 1)">
+            droite
+          </button>
         </div>
         <div class="button" ref="screenshots">
           <template v-for="(src, index) in project.src" :key="index">
             <img
               :src="src"
               :alt="project.name + ' ' + index"
-              :class='"size-10 rounded " + (index == currentImage ? "border-2 border-white" : "")'
+              :class="
+                'size-10 rounded ' +
+                (index == currentImage ? 'border-2 border-white' : '')
+              "
+              @click="handleChangeCurrentImage(index)"
             />
           </template>
         </div>
