@@ -30,12 +30,6 @@ watch(viewMore, (newValue) => {
       <template  v-for="(skill, index) in skills" :key="index">
         <Skill class="flex-1" :skill="skill"></Skill>
       </template>
-      <p>sass</p>
-      <p>c</p>
-      <p>tailwind</p>
-      <p>wordpress</p>
-      <p>figma</p>
-      <p>DaisyUi</p>
     </div>
 
     <p class="hover w-fit" @click="viewMore = !viewMore">

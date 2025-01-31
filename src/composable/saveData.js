@@ -25,7 +25,7 @@ export function saveData() {
       ],
     },
     {
-      id: 4,
+      id: 2,
       name: "EventPlanner+",
       src: [
         "/projects/eventPlanner/screen1.png",
@@ -48,14 +48,14 @@ export function saveData() {
         "VS Code",
         "HTML",
         "Sass",
-        "TailWind",
-        "DaisyUi",
+        "Tailwind",
+        "DaisyUI",
       ],
       dsc: "",
       github: ["https://github.com/EvrardThibaud/event-planner"],
     },
     {
-      id: 2,
+      id: 3,
       name: "HelpHub",
       src: [],
       skills: [
@@ -76,22 +76,22 @@ export function saveData() {
       github: [],
     },
     {
-      id: 3,
+      id: 4,
       name: "Fifa Store",
       src: ["/projects/fifa/screen1.png"],
       skills: [
         "Vue.js",
-        "Vite",
+        "Tailwind",
         "C#",
+        "Vite",
         "JavaScript",
+        "DaisyUI",
         "CSS",
         "GitHub",
         "Visual Studio",
         "VS Code",
         "HTML",
-        "TailWind",
         "Azure DevOps",
-        "DaisyUi",
       ],
       dsc: "",
       github: [
@@ -235,6 +235,42 @@ export function saveData() {
       src: "/skills/dbeaver_logo.png",
       name: "DBeaver",
       alt: "DBeaver Logo",
+    },
+    {
+      id: 32,
+      src: "/skills/sass_logo.png",
+      name: "Sass",
+      alt: "Sass Logo",
+    },
+    {
+      id: 33,
+      src: "/skills/c_logo.png",
+      name: "C",
+      alt: "C Logo",
+    },
+    {
+      id: 34,
+      src: "/skills/tailwind_logo.png",
+      name: "Tailwind",
+      alt: "Tailwind Logo",
+    },
+    {
+      id: 35,
+      src: "/skills/wordpress_logo.png",
+      name: "WordPress",
+      alt: "WordPress Logo",
+    },
+    {
+      id: 36,
+      src: "/skills/figma_logo.png",
+      name: "Figma",
+      alt: "Figma Logo",
+    },
+    {
+      id: 37,
+      src: "/skills/daisyui_logo.png",
+      name: "DaisyUI",
+      alt: "DaisyUI Logo",
     },
   ];
 
