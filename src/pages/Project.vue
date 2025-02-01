@@ -111,7 +111,7 @@ const filteredSkills = computed(() => {
           <div>
             <img
               :src="project.src[currentImage]"
-              :alt="project.name + ' ' + index"
+              :alt="project.name + ' ' + currentImage"
             />
           </div>
           <button
@@ -121,14 +121,14 @@ const filteredSkills = computed(() => {
             <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
-        <div class="mt-4 button" ref="screenshots">
+        <div class="mt-4 box" ref="screenshots">
           <template v-for="(src, index) in project.src" :key="index">
             <img
               :src="src"
               :alt="project.name + ' ' + index"
               :class="
                 'size-10 rounded ' +
-                (index == currentImage ? 'border-2 border-white' : '')
+                (index == currentImage ? 'border-2 border-white' : 'hover')
               "
               @click="handleChangeCurrentImage(index)"
             />
