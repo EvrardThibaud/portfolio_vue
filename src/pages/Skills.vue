@@ -23,6 +23,7 @@ function handleSearchSkills() {
   <div class="container">
     <p class="text-3xl font-semibold">My Skills</p>
     <input
+    class="mt-2 w-full"
       type="text"
       placeholder="Search for a skills"
       v-model="prompt"
