@@ -14,10 +14,23 @@ watch(viewMore, (newValue) => {
 onMounted(() => {
   viewMore.value = JSON.parse(localStorage.getItem("viewMore")) || false;
 });
+
+function handleViewMoreSkills() {
+  viewMore.value = !viewMore.value;
+  setTimeout(() => {
+    const skillsCard = document.getElementById("skills_card");
+    console.log(skillsCard);
+    if (skillsCard) {
+      skillsCard.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, 100); 
+}
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" id="skills_card">
     <p class="text-2xl font-semibold leading-7">My Skills</p>
     <div
       id="skillsContainer"
@@ -27,12 +40,12 @@ onMounted(() => {
         viewMore ? '' : 'h-20 overflow-hidden',
       ]"
     >
-      <template  v-for="(skill, index) in skills" :key="index">
+      <template v-for="(skill, index) in skills" :key="index">
         <Skill class="flex-1" :skill="skill"></Skill>
       </template>
     </div>
 
-    <p class="hover w-fit" @click="viewMore = !viewMore">
+    <p class="hover w-fit" @click="handleViewMoreSkills">
       View {{ viewMore ? "Less" : "More" }}
       <i
         :class="viewMore ? 'fa-solid fa-angles-up' : 'fa-solid fa-angles-down'"
