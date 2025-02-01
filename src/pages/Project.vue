@@ -98,19 +98,30 @@ const filteredSkills = computed(() => {
 
     <template v-if="showingScreenshot">
       <div class="gallery">
+        <button @click="handleViewScreenshots" class="button close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
         <div class="gallery_slider">
-          <button @click="handleChangeCurrentImage(currentImage - 1)">
-            gauche
+          <button
+            @click="handleChangeCurrentImage(currentImage - 1)"
+            class="button"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
           </button>
-          <img
-            :src="project.src[currentImage]"
-            :alt="project.name + ' ' + index"
-          />
-          <button @click="handleChangeCurrentImage(currentImage + 1)">
-            droite
+          <div>
+            <img
+              :src="project.src[currentImage]"
+              :alt="project.name + ' ' + index"
+            />
+          </div>
+          <button
+            @click="handleChangeCurrentImage(currentImage + 1)"
+            class="button"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
-        <div class="button" ref="screenshots">
+        <div class="mt-4 button" ref="screenshots">
           <template v-for="(src, index) in project.src" :key="index">
             <img
               :src="src"
@@ -135,6 +146,7 @@ const filteredSkills = computed(() => {
   align-items: center;
   flex-direction: column;
   position: absolute;
+  background-color: var(--fallback-b1, oklch(var(--b1) / 1));
   width: 100vw;
   height: 100vh;
   left: 0;
@@ -143,6 +155,13 @@ const filteredSkills = computed(() => {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+
+  .close {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+  }
 
   &:hover {
     cursor: default;
@@ -153,10 +172,23 @@ const filteredSkills = computed(() => {
     justify-content: center;
     align-items: center;
 
-    & > img {
-      height: 70vh;
-      scroll-snap-align: center;
-      width: auto;
+    & > div {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70vw;
+
+      & > img {
+        height: 70vh;
+        scroll-snap-align: center;
+        max-width: 100%;
+      }
+    }
+
+    .button {
+      height: 100%;
+      margin: 1rem;
     }
   }
 }
