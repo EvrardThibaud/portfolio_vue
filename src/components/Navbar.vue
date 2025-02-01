@@ -5,6 +5,7 @@
     <div class="container flex items-center justify-center gap-8 ">
       <RouterLink :to="{ name: 'home' }" class="hover"> Home </RouterLink>
       <RouterLink :to="{ name: 'projects' }" class="hover"> Projects </RouterLink>
+      <RouterLink :to="{ name: 'skills' }" class="hover"> Skills </RouterLink>
     </div>
   </nav>
 </template>

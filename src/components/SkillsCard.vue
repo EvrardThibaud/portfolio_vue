@@ -6,11 +6,6 @@ const skills = ref(JSON.parse(localStorage.getItem("skills")) || []);
 const skillsContainer = ref(null);
 const viewMore = ref(localStorage.getItem("viewMore") || "false");
 
-function handleViewMoreSkills() {
-  skillsContainer.value.classList.toggle("h-20");
-  skillsContainer.value.classList.toggle("overflow-hidden");
-}
-
 watch(viewMore, (newValue) => {
   localStorage.setItem("viewMore", newValue);
 });

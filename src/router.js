@@ -16,7 +16,11 @@ const routes = [
     name: "project",
     component: () => import("./pages/Project.vue"),
   },
-  ,
+  {
+    path: "/skills",
+    name: "skills",
+    component: () => import("./pages/Skills.vue"),
+  },
   {
     path: "/:catchAll(.*)",
     name: "Error404",
