@@ -1,9 +1,10 @@
 import { createApp } from "vue";
-import "./style.css";
-import "./style/card.css";
-import "./style/button.css";
-import "./style/container.css";
-import "./style/box.css";
+import "./style.scss";
+import "./style/card.scss";
+import "./style/button.scss";
+import "./style/input.scss";
+import "./style/container.scss";
+import "./style/box.scss";
 import App from "./App.vue";
 import router from "./router";
 import { cardEffect } from './composable/cardEffect';
