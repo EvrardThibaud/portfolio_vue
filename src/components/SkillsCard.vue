@@ -1,13 +1,18 @@
 <script setup>
 import Skill from "./Skill.vue";
 import { ref, watch } from "vue";
+import { onMounted } from "vue";
 
 const skills = ref(JSON.parse(localStorage.getItem("skills")) || []);
 const skillsContainer = ref(null);
-const viewMore = ref(localStorage.getItem("viewMore") || "false");
+const viewMore = ref(null);
 
 watch(viewMore, (newValue) => {
   localStorage.setItem("viewMore", newValue);
+});
+
+onMounted(() => {
+  viewMore.value = JSON.parse(localStorage.getItem("viewMore")) || false;
 });
 </script>
 
