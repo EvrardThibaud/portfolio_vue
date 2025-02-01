@@ -103,6 +103,7 @@ const filteredSkills = computed(() => {
         </button>
         <div class="gallery_slider">
           <button
+            v-if="project.src.length > 1"
             @click="handleChangeCurrentImage(currentImage - 1)"
             class="button"
           >
@@ -115,6 +116,7 @@ const filteredSkills = computed(() => {
             />
           </div>
           <button
+            v-if="project.src.length > 1"
             @click="handleChangeCurrentImage(currentImage + 1)"
             class="button"
           >
@@ -173,7 +175,6 @@ const filteredSkills = computed(() => {
     align-items: center;
 
     & > div {
-
       display: flex;
       justify-content: center;
       align-items: center;
