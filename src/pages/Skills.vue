@@ -1,5 +1,5 @@
 trl<script setup>
-import Skill from "../components/Skill.vue";
+import SkillCard from "../components/SkillCard.vue";
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
 import { computed } from "vue";
@@ -79,13 +79,13 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="flex flex-wrap gap-2 my-4">
+    <div class="my-4">
       <template v-for="(skill, index) in skillsSearched" :key="skill.id">
-        <Skill
+        <SkillCard
           class="flex-1"
           :skill="skill"
           @click="handleOpenSkill(index)"
-        ></Skill>
+        ></SkillCard>
       </template>
     </div>
   </div>
