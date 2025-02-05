@@ -34,8 +34,9 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.skill_card{
-    
+.card{
+    height: fit-content;
+    background-color: red !important;
 }
 
 .project_link {
