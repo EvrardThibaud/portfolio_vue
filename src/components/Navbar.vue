@@ -6,6 +6,7 @@
       <RouterLink :to="{ name: 'home' }" class="hover"> Home </RouterLink>
       <RouterLink :to="{ name: 'projects' }" class="hover"> Projects </RouterLink>
       <RouterLink :to="{ name: 'skills' }" class="hover"> Skills </RouterLink>
+      <RouterLink :to="{ name: 'design' }" class="hover"> Graphic Design </RouterLink>
     </div>
   </nav>
 </template>
