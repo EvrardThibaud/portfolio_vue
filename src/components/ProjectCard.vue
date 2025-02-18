@@ -59,7 +59,7 @@ const props = defineProps({
   max-width: min(100%, 90vw);
   padding: 2rem;
   box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.606);
-  margin: 1rem 0;
+  margin: 10vh 0;
   border-radius: 8px;
   transform-origin: center center 0px;
   transition: all 0.5s ease-out;
