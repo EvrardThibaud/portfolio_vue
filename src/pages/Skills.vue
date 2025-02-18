@@ -22,7 +22,7 @@ const skillsSearched = computed(() => {
 });
 
 function handleKeyDown(event) {
-  if (event.ctrlKey && ctrl.value) {
+  if ((event.ctrlKey || event.metaKey) && ctrl.value) {
     ctrl.value.classList.add("pressed");
   }
 
@@ -30,7 +30,7 @@ function handleKeyDown(event) {
     k.value.classList.add("pressed");
   }
 
-  if (event.ctrlKey && event.key === "k") {
+  if ((event.ctrlKey || event.metaKey) && event.key === "k") {
     event.preventDefault();
     document.activeElement === input.value
       ? input.value.blur()
@@ -39,10 +39,10 @@ function handleKeyDown(event) {
 }
 
 function handleKeyUp(event) {
-  if (event.key === "Control" && ctrl.value) {
+  if ((event.key === "Control" || event.key === "Meta") && ctrl.value ) {
     ctrl.value.classList.remove("pressed");
   }
-
+  
   if (event.key === "k" && k.value) {
     k.value.classList.remove("pressed");
   }
@@ -51,6 +51,12 @@ function handleKeyUp(event) {
 onMounted(() => {
   document.addEventListener("keydown", handleKeyDown);
   document.addEventListener("keyup", handleKeyUp);
+
+  if (navigator.userAgent.indexOf("Win") !== -1) {
+    ctrl.value.textContent = "Ctrl"
+  }   else if (navigator.userAgent.indexOf("Mac") !== -1) {
+    ctrl.value.textContent = "Cmd"
+  }
 });
 
 onUnmounted(() => {
@@ -74,7 +80,7 @@ onUnmounted(() => {
         v-model="prompt"
       />
       <div class="ctrlk flex gap-1">
-        <div class="touch" ref="ctrl">ctrl</div>
+        <div class="touch" ref="ctrl"></div>
         <div class="touch" ref="k">k</div>
       </div>
     </div>
