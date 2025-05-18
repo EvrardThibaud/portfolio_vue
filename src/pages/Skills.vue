@@ -35,18 +35,22 @@ function handleKeyDown(event) {
   if ((event.ctrlKey || event.metaKey) && event.key === "k") {
     event.preventDefault();
     document.activeElement === input.value
-      ? input.value.blur()
-      : input.value.focus();
+    ? input.value.blur()
+    : input.value.focus();
+
+    // For mac 
+    setTimeout(() => {
+      k.value.classList.remove("pressed");
+    }, 100);
   }
 }
 
 function handleKeyUp(event) {
-  if ((event.key === "Control" || event.key === "Meta") && ctrl.value) {
-    ctrl.value.classList.remove("pressed");
-  }
-
   if (event.key === "k" && k.value) {
     k.value.classList.remove("pressed");
+  }
+  if ((event.key === "Control" || event.key === "Meta") && ctrl.value) {
+    ctrl.value.classList.remove("pressed");
   }
 }
 
@@ -71,7 +75,8 @@ onUnmounted(() => {
 const randomSkill = ref(null);
 
 function setRandomSkill() {
-  randomSkill.value = skills.value[Math.floor(Math.random() * skills.value.length)];;
+  randomSkill.value =
+    skills.value[Math.floor(Math.random() * skills.value.length)];
 }
 
 function handleTrySkills() {
@@ -129,7 +134,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 @keyframes slide-fade-in {
   from {
     opacity: 0;
