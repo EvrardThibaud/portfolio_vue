@@ -8,14 +8,15 @@ const skillsContainer = ref(null);
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'skills' }">
-    <div class="card">
-      <div class="flex justify-between items-center">
-        <p class="text-2xl font-semibold leading-7">My Skills</p>
+  <div class="card">
+    <div class="flex justify-between items-center">
+      <p class="text-2xl font-semibold leading-7">My Skills</p>
+      <RouterLink :to="{ name: 'skills' }">
         <p class="hover font-extralight">
           View all
           <i class="fa-solid fa-arrow-right ml-2"></i>
         </p>
+      </RouterLink>
       </div>
       <div
         id="skillsContainer"
@@ -27,7 +28,6 @@ const skillsContainer = ref(null);
         </template>
       </div>
     </div>
-  </RouterLink>
 </template>
 
 <style scoped>
