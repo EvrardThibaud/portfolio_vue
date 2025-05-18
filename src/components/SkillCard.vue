@@ -41,9 +41,10 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   flex-direction: row;
+
   & img{
-   max-height: 100px; 
-   max-width: 100px; 
+   max-height: 40px; 
+   max-width: 40px; 
    width: auto;
   }
 }

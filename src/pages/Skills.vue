@@ -35,10 +35,10 @@ function handleKeyDown(event) {
   if ((event.ctrlKey || event.metaKey) && event.key === "k") {
     event.preventDefault();
     document.activeElement === input.value
-    ? input.value.blur()
-    : input.value.focus();
+      ? input.value.blur()
+      : input.value.focus();
 
-    // For mac 
+    // For mac
     setTimeout(() => {
       k.value.classList.remove("pressed");
     }, 100);
@@ -94,7 +94,7 @@ onMounted(() => {
   <div class="container">
     <p class="text-3xl font-semibold">My Skills</p>
 
-    <div class="flex relative">
+    <div class="flex sticky top-0 z-10">
       <input
         ref="input"
         class="mt-2 w-full"
@@ -135,9 +135,22 @@ onMounted(() => {
 
 <style scoped>
 @keyframes slide-fade-in {
-  from {
-    opacity: 0;
+  0% {
     transform: translateY(10vh);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(10vh);
+
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(10vh);
+    opacity: 0;
   }
 }
 
