@@ -47,7 +47,7 @@ const filteredSkills = computed(() => {
       >
         {{ project.dsc }}
       </p>
-      <p class="hover w-fit mt-1 select-none" @click="viewMore = !viewMore">
+      <p class="hover w-fit mt-1 select-none font-extralight" @click="viewMore = !viewMore">
         View {{ viewMore ? "Less" : "More" }}
       </p>
     </div>
@@ -66,12 +66,12 @@ const filteredSkills = computed(() => {
         </div>
       </template>
     </div>
-    <p v-if="project.github.length > 1" class="opacity-75 mb-3">
+    <p v-if="project.github.length > 1" class="opacity-75 mb-3 font-extralight">
       This project has {{ project.github.length }} versions.
     </p>
     <p
       v-else-if="project.github.length == 0"
-      class="opacity-75 text-center mb-3"
+      class="opacity-75 text-center mb-3 font-extralight"
     >
       Unfortunately, the source code of this project is not available.
     </p>
@@ -91,7 +91,7 @@ const filteredSkills = computed(() => {
     </template>
 
     <template v-else
-      ><p class="opacity-75 text-center my-3">
+      ><p class="opacity-75 text-center my-3 font-extralight">
         Unfortunately, there are no screenshots for this project.
       </p>
     </template>
