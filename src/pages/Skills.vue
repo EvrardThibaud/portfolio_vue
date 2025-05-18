@@ -1,9 +1,9 @@
-trl<script setup>
+trl
+<script setup>
 import SkillCard from "../components/SkillCard.vue";
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
 import { computed } from "vue";
-
 
 const input = ref(null);
 const ctrl = ref(null);
@@ -20,6 +20,8 @@ const skillsSearched = computed(() => {
       )
     : skills.value;
 });
+
+// Keyboard shortcut for Ctrl + K or Cmd + K
 
 function handleKeyDown(event) {
   if ((event.ctrlKey || event.metaKey) && ctrl.value) {
@@ -39,10 +41,10 @@ function handleKeyDown(event) {
 }
 
 function handleKeyUp(event) {
-  if ((event.key === "Control" || event.key === "Meta") && ctrl.value ) {
+  if ((event.key === "Control" || event.key === "Meta") && ctrl.value) {
     ctrl.value.classList.remove("pressed");
   }
-  
+
   if (event.key === "k" && k.value) {
     k.value.classList.remove("pressed");
   }
@@ -53,9 +55,9 @@ onMounted(() => {
   document.addEventListener("keyup", handleKeyUp);
 
   if (navigator.userAgent.indexOf("Win") !== -1) {
-    ctrl.value.textContent = "Ctrl"
-  }   else if (navigator.userAgent.indexOf("Mac") !== -1) {
-    ctrl.value.textContent = "Cmd"
+    ctrl.value.textContent = "Ctrl";
+  } else if (navigator.userAgent.indexOf("Mac") !== -1) {
+    ctrl.value.textContent = "Cmd";
   }
 });
 
@@ -64,7 +66,23 @@ onUnmounted(() => {
   document.removeEventListener("keyup", handleKeyUp);
 });
 
+// Random skill if no skills match
 
+const randomSkill = ref(null);
+
+function setRandomSkill() {
+  randomSkill.value = skills.value[Math.floor(Math.random() * skills.value.length)];;
+}
+
+function handleTrySkills() {
+  prompt.value = randomSkill.value.name;
+  input.value.focus();
+  setRandomSkill();
+}
+
+onMounted(() => {
+  setRandomSkill();
+});
 </script>
 
 <template>
@@ -86,6 +104,19 @@ onUnmounted(() => {
     </div>
 
     <div class="my-4">
+      <template v-if="skillsSearched.length == 0">
+        <p class="text-center opacity-75">No skills match your search. 👀</p>
+        <p
+          class="cursor-pointer text-center opacity-75"
+          @click="handleTrySkills"
+        >
+          Try
+          <span class="gradient-text">
+            {{ randomSkill?.name }}
+          </span>
+        </p>
+      </template>
+
       <template v-for="(skill, index) in skillsSearched" :key="skill.id">
         <SkillCard
           class="flex-1"
@@ -98,6 +129,23 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10vh);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skill_card {
+    view-timeline-name: --item-timeline;
+    animation: slide-fade-in both;
+    animation-timeline: --item-timeline;
+    animatio-range: contain 0% contain 50%;
+  }
+}
+
 .ctrlk {
   position: absolute;
   right: 10px;
@@ -115,10 +163,16 @@ onUnmounted(() => {
     transition: 0.1s ease all;
   }
 
-  & > .pressed{
+  & > .pressed {
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.606),
       0px 0px 0 rgba(255, 255, 255, 0.606);
     transform: translateY(2px);
   }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>

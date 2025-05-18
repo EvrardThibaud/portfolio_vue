@@ -12,7 +12,7 @@ const skillsContainer = ref(null);
     <div class="card">
       <div class="flex justify-between items-center">
         <p class="text-2xl font-semibold leading-7">My Skills</p>
-        <p class="hover">
+        <p class="hover font-extralight">
           View all
           <i class="fa-solid fa-arrow-right ml-2"></i>
         </p>

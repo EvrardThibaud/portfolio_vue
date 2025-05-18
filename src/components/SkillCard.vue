@@ -9,8 +9,9 @@ const props = defineProps({
 
 <template>
   <div class="skill_card card">
+    <img :src="skill.src" alt="">
     <p>{{ skill.name }}</p>
-    <template v-for="(project, index) in projects" :key="index">
+    <!-- <template v-for="(project, index) in projects" :key="index">
       <template v-if="project.skills.includes(skill.name)">
         <RouterLink
           :to="{
@@ -29,14 +30,22 @@ const props = defineProps({
           </div>
         </RouterLink>
       </template>
-    </template>
+    </template> -->
   </div>
 </template>
 
 <style scoped>
-.card{
-    height: fit-content;
-    background-color: red !important;
+
+.skill_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  & img{
+   max-height: 100px; 
+   max-width: 100px; 
+   width: auto;
+  }
 }
 
 .project_link {
