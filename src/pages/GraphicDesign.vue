@@ -31,8 +31,14 @@ fetch(
       img: channel.snippet.thumbnails.default.url,
     });
   })
-
   .catch((err) => console.error("Erreur :", err));
+
+  fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=LUH58bF86rE&key=${API_KEY}`)
+  .then(res => res.json())
+  .then(data => {
+    const video = data.items[0];
+    console.log(data)
+  });
 </script>
 
 <template>
