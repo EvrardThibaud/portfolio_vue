@@ -1,8 +1,37 @@
 <script setup>
 import { ref } from "vue";
 import Skill from "../components/Skill.vue";
+import { onMounted } from 'vue'
+
 const skills = ref(JSON.parse(localStorage.getItem("skills")) || []);
 const photoshop = skills.value.find(skill => skill.id === 39);
+
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://apis.google.com/js/api.js'
+  script.async = true
+  document.head.appendChild(script)
+})
+
+const API_KEY = "AIzaSyCM5oAgZbKktibPLUYzy9jgmC2LLvDi8bY"
+
+fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=Ashtax&key=${API_KEY}`)
+  .then(res => res.json())
+  .then(data => {
+    const channelId = data.items[0].id.channelId
+    console.log("Channel ID :", channelId)
+
+    // Requête pour récupérer les statistiques maintenant
+    return fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${API_KEY}`)
+  })
+  .then(res => res.json())
+  .then(data => {
+    const channel = data.items[0]
+    console.log("Nom :", channel.snippet.title)
+    console.log("Abonnés :", channel.statistics.subscriberCount)
+  })
+  .catch(err => console.error("Erreur :", err))
+
 </script>
 
 <template>
