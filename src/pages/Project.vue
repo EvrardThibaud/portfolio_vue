@@ -47,7 +47,10 @@ const filteredSkills = computed(() => {
       >
         {{ project.dsc }}
       </p>
-      <p class="hover w-fit mt-1 select-none font-extralight" @click="viewMore = !viewMore">
+      <p
+        class="hover w-fit mt-1 select-none font-extralight"
+        @click="viewMore = !viewMore"
+      >
         View {{ viewMore ? "Less" : "More" }}
       </p>
     </div>
@@ -98,30 +101,30 @@ const filteredSkills = computed(() => {
 
     <template v-if="showingScreenshot">
       <div class="gallery">
-        <button @click="handleViewScreenshots" class="button close">
-          <i class="fa-solid fa-xmark"></i>
+        <button @click="handleViewScreenshots" class="hover close">
+          <i  class=" fa-solid fa-xmark"></i>
         </button>
         <div class="gallery_slider">
-          <button
+          <div
             v-if="project.src.length > 1"
             @click="handleChangeCurrentImage(currentImage - 1)"
-            class="button"
+            class="hover"
           >
             <i class="fa-solid fa-chevron-left"></i>
-          </button>
+          </div>
           <div>
             <img
               :src="project.src[currentImage]"
               :alt="project.name + ' ' + currentImage"
             />
           </div>
-          <button
+          <div
             v-if="project.src.length > 1"
             @click="handleChangeCurrentImage(currentImage + 1)"
-            class="button"
+            class="hover"
           >
             <i class="fa-solid fa-chevron-right"></i>
-          </button>
+          </div>
         </div>
         <div class="mt-4 box" ref="screenshots">
           <template v-for="(src, index) in project.src" :key="index">
@@ -138,6 +141,7 @@ const filteredSkills = computed(() => {
         </div>
       </div>
     </template>
+
   </div>
 </template>
 
@@ -187,7 +191,8 @@ const filteredSkills = computed(() => {
       }
     }
 
-    .button {
+    .hover {
+      width: auto;
       height: 100%;
       margin: 1rem;
     }

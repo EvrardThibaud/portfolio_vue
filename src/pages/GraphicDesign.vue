@@ -1,12 +1,17 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import Skill from "../components/Skill.vue";
+const skills = ref(JSON.parse(localStorage.getItem("skills")) || []);
+const photoshop = skills.value.find(skill => skill.id === 39);
+</script>
 
 <template>
-  <p>Graphic Design</p>
-  <img id="photoshop_logo" src="../../public/photoshop_logo.png" alt="" />
+  <div class="container">
 
-  <div id="youtube_card" class="box">
-    <img src="../../public/youtube_logo.png" alt="" />
-    <p>Youtube Thumbnails</p>
+    <h1 class="text-3xl font-semibold">Projects</h1>
+    
+    <Skill :skill="photoshop"></Skill>
+    
   </div>
 </template>
 

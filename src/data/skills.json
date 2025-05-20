@@ -264,5 +264,12 @@
     "name": "VMware",
     "alt": "VMware Logo",
     "color": "#a855f7"
+  },
+  {
+    "id": 39,
+    "src": "/skills/photoshop_logo.png",
+    "name": "Photoshop",
+    "alt": "Photoshop Logo",
+    "color": "#31A8FF"
   }
 ]
