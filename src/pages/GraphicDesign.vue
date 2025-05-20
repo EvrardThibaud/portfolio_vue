@@ -29,15 +29,23 @@ fetch(
       name: channel.snippet.title,
       subscriberCount: channel.statistics.subscriberCount,
       img: channel.snippet.thumbnails.default.url,
+      videos: [],
     });
   })
   .catch((err) => console.error("Erreur :", err));
 
-  fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=LUH58bF86rE&key=${API_KEY}`)
-  .then(res => res.json())
-  .then(data => {
-    const video = data.items[0];
-    console.log(data)
+fetch(
+  `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=LUH58bF86rE&key=${API_KEY}`
+)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(youtubeurs.value)
+    // youtubeurs.value[0].videos.push({
+    //   title: data.items[0].snippet.title,
+    //   thumbnail: data.items[0].snippet.thumbnails.maxres.url,
+    //   viewCount: data.items[0].statistics.viewCount,
+    // });
+    // console.log(data);
   });
 </script>
 
@@ -52,6 +60,12 @@ fetch(
         <img :src="youtubeur.img" :alt="youtubeur.name + ' profile picture'" />
         <h2>{{ youtubeur.name }}</h2>
         <p>{{ youtubeur.subscriberCount }} followers</p>
+
+        <template v-for="video in youtubeur.videos">
+          <img :src="video.thumbnail" :alt="video.title + ' thumbnail'" />
+          <h3>{{ video.title }}</h3>
+          <p>{{ video.viewCount }} views</p>
+        </template>
       </div>
     </template>
   </div>
