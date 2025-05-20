@@ -17,17 +17,16 @@ const projects = ref(JSON.parse(localStorage.getItem("projects")) || []);
 <style scoped>
 @keyframes slide-fade-in {
   0% {
-    transform: translateY(10vh);
+    transform: translateY(30vh);
+    opacity: 0;
   }
-  80% {
-    transform: translateY(0);
-  }
-  90% {
-    transform: translateY(10vh);
-
+  50% {
+    transform: translateY(0vh);
+    opacity: 1;
   }
   100% {
-    transform: translateY(10vh);
+    /* transform: translateY(30vh); */
+    opacity: 0;
   }
 }
 
