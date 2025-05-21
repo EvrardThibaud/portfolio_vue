@@ -140,7 +140,7 @@ onMounted(() => {
     opacity: 0;
   }
   80% {
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     opacity: 1;
   }
   90% {
@@ -149,7 +149,7 @@ onMounted(() => {
     opacity: 0;
   }
   100% {
-    transform: translateY(10vh);
+    transform: translateY(20vh);
     opacity: 0;
   }
 }
