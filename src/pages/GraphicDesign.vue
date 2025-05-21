@@ -9,18 +9,14 @@ const youtubeurs = ref([]);
 
 const API_KEY = "AIzaSyCM5oAgZbKktibPLUYzy9jgmC2LLvDi8bY";
 
-let channelId = "";
+let channelId = "UC1q7LRamyojZuAbhsBWWgAA";
+
+// get id  `https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=Ashtax&key=${API_KEY}`
+ 
 
 fetch(
-  `https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=Ashtax&key=${API_KEY}`
-)
-  .then((res) => res.json())
-  .then((data) => {
-    channelId = data.items[0].id.channelId;
-    return fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings&id=${channelId}&key=${API_KEY}`
-    );
-  })
+    )
   .then((res) => res.json())
   .then((data) => {
     const channel = data.items[0];
