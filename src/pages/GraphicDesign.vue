@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import Skill from "../components/Skill.vue";
-import { onMounted } from "vue";
 
 const skills = ref(JSON.parse(localStorage.getItem("skills")) || []);
 const photoshop = skills.value.find((skill) => skill.id === 39);
@@ -31,22 +30,21 @@ fetch(
       img: channel.snippet.thumbnails.default.url,
       videos: [],
     });
+
+    fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=LUH58bF86rE&key=${API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        youtubeurs.value[0].videos.push({
+          title: data.items[0].snippet.title,
+          thumbnail: data.items[0].snippet.thumbnails.maxres.url,
+          viewCount: data.items[0].statistics.viewCount,
+        });
+      });
   })
   .catch((err) => console.error("Erreur :", err));
 
-fetch(
-  `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=LUH58bF86rE&key=${API_KEY}`
-)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(youtubeurs.value)
-    // youtubeurs.value[0].videos.push({
-    //   title: data.items[0].snippet.title,
-    //   thumbnail: data.items[0].snippet.thumbnails.maxres.url,
-    //   viewCount: data.items[0].statistics.viewCount,
-    // });
-    // console.log(data);
-  });
 </script>
 
 <template>
