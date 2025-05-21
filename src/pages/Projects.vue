@@ -20,20 +20,16 @@ const projects = ref(JSON.parse(localStorage.getItem("projects")) || []);
     transform: translateY(30vh);
     opacity: 0;
   }
-  50% {
-    transform: translateY(0vh);
-    opacity: 1;
-  }
   100% {
-    /* transform: translateY(30vh); */
-    opacity: 0;
+    transform: translateY(0vh);
+    /* opacity: 0; */
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .project_card{
     view-timeline-name: --item-timeline;
-    animation: slide-fade-in both;
+    /* animation: slide-fade-in both; */
     animation-timeline: --item-timeline;
     animatio-range: contain 0% contain 50%;
   }
