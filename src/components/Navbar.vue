@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ThemeToggle from "./ThemeToggle.vue";
+</script>
 
 <template>
   <nav class="flex items-center fixed h-full w-auto left-0 top-0 p-16">
@@ -11,6 +13,7 @@
       <RouterLink :to="{ name: 'design' }" class="hover">
         Graphic Design
       </RouterLink>
+      <ThemeToggle></ThemeToggle>
     </div>
   </nav>
 </template>

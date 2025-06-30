@@ -7,15 +7,18 @@ import "./style/container.scss";
 import "./style/box.scss";
 import App from "./App.vue";
 import router from "./router";
-import { cardEffect } from './composable/cardEffect';
+import { cardEffect } from "./composable/cardEffect";
 import { saveData } from "./composable/saveData";
 
-saveData()
+saveData();
 
 const app = createApp(App);
 
-cardEffect('.project_card');
-document.documentElement.classList.add("dark");
+cardEffect(".project_card");
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.documentElement.classList.add("dark");
+}
 
 app.use(router);
 app.mount("#app");
