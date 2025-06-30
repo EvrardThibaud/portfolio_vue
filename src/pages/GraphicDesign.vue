@@ -77,11 +77,13 @@ async function fetchYouTubeDataSequentially() {
 // )
 //   .then((res) => res.json())
 //   .then((data) => {
-//     youtubeurs.value[0].videos.push({
-//       title: data.items[0].snippet.title,
-//       thumbnail: data.items[0].snippet.thumbnails.maxres.url,
-//       viewCount: data.items[0].statistics.viewCount,
-//     });
+//     console.log(data);
+    
+//     // youtubeurs.value[0].videos.push({
+//     //   title: data.items[0].snippet.title,
+//     //   thumbnail: data.items[0].snippet.thumbnails.maxres.url,
+//     //   viewCount: data.items[0].statistics.viewCount,
+//     // });
 //   });
 </script>
 

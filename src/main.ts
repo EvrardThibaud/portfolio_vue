@@ -15,6 +15,7 @@ saveData()
 const app = createApp(App);
 
 cardEffect('.project_card');
+document.documentElement.classList.add("dark");
 
 app.use(router);
 app.mount("#app");
