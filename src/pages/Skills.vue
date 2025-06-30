@@ -1,52 +1,52 @@
-trl
-<script setup>
+<script setup lang="ts">
 import SkillCard from "../components/SkillCard.vue";
-import { ref } from "vue";
-import { onMounted, onUnmounted } from "vue";
-import { computed } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 
-const input = ref(null);
-const ctrl = ref(null);
-const k = ref(null);
-const prompt = ref("");
-const skills = ref(JSON.parse(localStorage.getItem("skills")) || []);
+interface Skill {
+  id: number;
+  name: string;
+  src?: string;
+  alt?: string;
+  color?: string;
+}
+
+const input = ref<HTMLInputElement | null>(null);
+const ctrl = ref<HTMLDivElement | null>(null);
+const k = ref<HTMLDivElement | null>(null);
+const prompt = ref<string>("");
+
+const skills = ref<Skill[]>(JSON.parse(localStorage.getItem("skills") || "[]"));
 
 const skillsSearched = computed(() => {
   const searchTerm = prompt.value.trim().toLowerCase();
-
-  return searchTerm
-    ? skills.value.filter((skill) =>
-        skill.name.toLowerCase().includes(searchTerm)
-      )
-    : skills.value;
+  if (!searchTerm) return skills.value;
+  return skills.value.filter((skill) =>
+    skill.name.toLowerCase().includes(searchTerm)
+  );
 });
 
-// Keyboard shortcut for Ctrl + K or Cmd + K
-
-function handleKeyDown(event) {
+function handleKeyDown(event: KeyboardEvent) {
   if ((event.ctrlKey || event.metaKey) && ctrl.value) {
     ctrl.value.classList.add("pressed");
   }
-
-  if (event.key === "k" && k.value) {
+  if (event.key.toLowerCase() === "k" && k.value) {
     k.value.classList.add("pressed");
   }
-
-  if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
     event.preventDefault();
-    document.activeElement === input.value
-      ? input.value.blur()
-      : input.value.focus();
-
-    // For mac
+    if (document.activeElement === input.value) {
+      input.value?.blur();
+    } else {
+      input.value?.focus();
+    }
     setTimeout(() => {
-      k.value.classList.remove("pressed");
+      k.value?.classList.remove("pressed");
     }, 100);
   }
 }
 
-function handleKeyUp(event) {
-  if (event.key === "k" && k.value) {
+function handleKeyUp(event: KeyboardEvent) {
+  if (event.key.toLowerCase() === "k" && k.value) {
     k.value.classList.remove("pressed");
   }
   if ((event.key === "Control" || event.key === "Meta") && ctrl.value) {
@@ -59,10 +59,12 @@ onMounted(() => {
   document.addEventListener("keyup", handleKeyUp);
 
   if (navigator.userAgent.indexOf("Win") !== -1) {
-    ctrl.value.textContent = "Ctrl";
+    if (ctrl.value) ctrl.value.textContent = "Ctrl";
   } else if (navigator.userAgent.indexOf("Mac") !== -1) {
-    ctrl.value.textContent = "Cmd";
+    if (ctrl.value) ctrl.value.textContent = "Cmd";
   }
+
+  setRandomSkill();
 });
 
 onUnmounted(() => {
@@ -70,24 +72,31 @@ onUnmounted(() => {
   document.removeEventListener("keyup", handleKeyUp);
 });
 
-// Random skill if no skills match
-
-const randomSkill = ref(null);
+const randomSkill = ref<Skill | null>(null);
 
 function setRandomSkill() {
+  if (skills.value.length === 0) {
+    randomSkill.value = null;
+    return;
+  }
   randomSkill.value =
     skills.value[Math.floor(Math.random() * skills.value.length)];
 }
 
 function handleTrySkills() {
+  if (!randomSkill.value) return;
   prompt.value = randomSkill.value.name;
-  input.value.focus();
+  input.value?.focus();
   setRandomSkill();
 }
 
-onMounted(() => {
-  setRandomSkill();
-});
+// Optionnel, car dans ton template tu utilises handleOpenSkill qui n'existe pas dans le script.
+// Tu peux le définir ou supprimer son usage selon besoin.
+
+function handleOpenSkill(index: number) {
+  // Exemple : console.log de la compétence cliquée
+  console.log("Skill clicked:", skillsSearched.value[index]);
+}
 </script>
 
 <template>
@@ -109,7 +118,7 @@ onMounted(() => {
     </div>
 
     <div class="my-4">
-      <template v-if="skillsSearched.length == 0">
+      <template v-if="skillsSearched.length === 0">
         <p class="text-center opacity-75">No skills match your search. 👀</p>
         <p
           class="cursor-pointer text-center opacity-75"
@@ -127,7 +136,7 @@ onMounted(() => {
           class="flex-1"
           :skill="skill"
           @click="handleOpenSkill(index)"
-        ></SkillCard>
+        />
       </template>
     </div>
   </div>

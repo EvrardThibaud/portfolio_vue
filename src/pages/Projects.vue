@@ -1,8 +1,19 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import ProjectCard from "../components/ProjectCard.vue";
 
-const projects = ref(JSON.parse(localStorage.getItem("projects")) || []);
+interface Project {
+  id: number;
+  name: string;
+  src: string[];
+  skills: string[];
+  dsc: string;
+  github: string[];
+}
+
+const projects = ref<Project[]>(
+  JSON.parse(localStorage.getItem("projects") || "[]")
+);
 </script>
 
 <template>
@@ -27,7 +38,7 @@ const projects = ref(JSON.parse(localStorage.getItem("projects")) || []);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .project_card{
+  .project_card {
     view-timeline-name: --item-timeline;
     /* animation: slide-fade-in both; */
     animation-timeline: --item-timeline;

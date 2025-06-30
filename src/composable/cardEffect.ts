@@ -1,18 +1,18 @@
 import { onMounted, onBeforeUnmount } from "vue";
 
-export function cardEffect(selector) {
-  const handleMouseEnter = (event) => {
-    const target = event.target;
+export function cardEffect(selector: string): void {
+  const handleMouseEnter = (event: Event) => {
+    const target = event.target as HTMLElement;
 
-    if (target.matches(selector)) {
+    if (target && target.matches(selector)) {
       let rect = target.getBoundingClientRect();
 
-      const handleMouseMove = (moveEvent) => {
+      const handleMouseMove = (moveEvent: MouseEvent) => {
         rect = target.getBoundingClientRect();
         const mouseMoveX = moveEvent.clientX - rect.left;
         const mouseMoveY = moveEvent.clientY - rect.top;
 
-        const maxX = rect.width; // Largeur de la carte
+        const maxX = rect.width;
         const rotateY = (mouseMoveX / maxX - 0.5) * 10;
         const rotateX = (mouseMoveY / rect.height - 0.5) * 10;
 
@@ -20,12 +20,17 @@ export function cardEffect(selector) {
       };
 
       target.addEventListener("mousemove", handleMouseMove);
-
       target.addEventListener("mouseout", () => {
         target.style.transform = "";
       });
     }
   };
 
-  document.addEventListener("mouseenter", handleMouseEnter, true);
+  onMounted(() => {
+    document.addEventListener("mouseenter", handleMouseEnter, true);
+  });
+
+  onBeforeUnmount(() => {
+    document.removeEventListener("mouseenter", handleMouseEnter, true);
+  });
 }

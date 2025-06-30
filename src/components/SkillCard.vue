@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineProps, ref } from "vue";
 const projects = ref(JSON.parse(localStorage.getItem("projects")) || []);
 

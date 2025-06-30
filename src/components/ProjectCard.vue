@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineProps, ref, computed } from "vue";
 import Skill from "./Skill.vue";
 const skills = JSON.parse(localStorage.getItem("skills")) || [];

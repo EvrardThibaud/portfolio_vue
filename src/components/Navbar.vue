@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 
 <template>
   <nav class="flex items-center fixed h-full w-auto left-0 top-0 p-16">

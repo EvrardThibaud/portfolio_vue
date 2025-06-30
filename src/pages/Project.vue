@@ -1,16 +1,35 @@
-<script setup>
+<script setup lang="ts">
 import { useRoute } from "vue-router";
 import { computed, ref } from "vue";
 import Skill from "../components/Skill.vue";
 
+interface Project {
+  id: number;
+  name: string;
+  src: string[];
+  skills: string[];
+  dsc: string;
+  github: string[];
+}
+
+interface Skill {
+  id: number;
+  src: string;
+  name: string;
+  alt: string;
+  color: string;
+}
+
 const route = useRoute();
 
 const viewMore = ref(false);
-const screenshots = ref(null);
+const screenshots = ref<null | HTMLElement>(null);
 const showingScreenshot = ref(false);
 const currentImage = ref(0);
 
-function handleChangeCurrentImage(value) {
+function handleChangeCurrentImage(value: number) {
+  if (!project.value) return;
+
   currentImage.value = value;
   if (currentImage.value < 0) currentImage.value = project.value.src.length - 1;
   if (currentImage.value >= project.value.src.length) currentImage.value = 0;
@@ -20,23 +39,27 @@ function handleViewScreenshots() {
   showingScreenshot.value = !showingScreenshot.value;
 }
 
-const projects = JSON.parse(localStorage.getItem("projects")) || [];
-const project = computed(() => {
-  return projects.find((proj) => proj.id == route.params.id);
+const projects = ref<Project[]>(
+  JSON.parse(localStorage.getItem("projects") || "[]")
+);
+const project = computed<Project | undefined>(() => {
+  return projects.value.find(
+    (proj) => String(proj.id) === String(route.params.id)
+  );
 });
 
-const skills = JSON.parse(localStorage.getItem("skills")) || [];
-const filteredSkills = computed(() => {
+const skills = ref<Skill[]>(JSON.parse(localStorage.getItem("skills") || "[]"));
+const filteredSkills = computed<Skill[]>(() => {
   if (!project.value) return [];
 
-  return skills.filter((skill) =>
-    project.value.skills.some((projectSkill) => projectSkill === skill.name)
+  return skills.value.filter((skill) =>
+    project.value!.skills.some((projectSkill) => projectSkill === skill.name)
   );
 });
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-if="project">
     <p class="text-3xl font-semibold">{{ project.name }}</p>
     <div v-if="project.dsc">
       <p
@@ -73,7 +96,7 @@ const filteredSkills = computed(() => {
       This project has {{ project.github.length }} versions.
     </p>
     <p
-      v-else-if="project.github.length == 0"
+      v-else-if="project.github.length === 0"
       class="opacity-75 text-center mb-3 font-extralight"
     >
       Unfortunately, the source code of this project is not available.
@@ -93,8 +116,8 @@ const filteredSkills = computed(() => {
       </div>
     </template>
 
-    <template v-else
-      ><p class="opacity-75 text-center my-3 font-extralight">
+    <template v-else>
+      <p class="opacity-75 text-center my-3 font-extralight">
         Unfortunately, there are no screenshots for this project.
       </p>
     </template>
@@ -102,7 +125,7 @@ const filteredSkills = computed(() => {
     <template v-if="showingScreenshot">
       <div class="gallery">
         <button @click="handleViewScreenshots" class="hover close">
-          <i  class=" fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="gallery_slider">
           <div
@@ -133,7 +156,7 @@ const filteredSkills = computed(() => {
               :alt="project.name + ' ' + index"
               :class="
                 'size-10 rounded ' +
-                (index == currentImage ? 'border-2 border-white' : 'hover')
+                (index === currentImage ? 'border-2 border-white' : 'hover')
               "
               @click="handleChangeCurrentImage(index)"
             />
@@ -141,7 +164,10 @@ const filteredSkills = computed(() => {
         </div>
       </div>
     </template>
+  </div>
 
+  <div v-else>
+    <p>Project not found.</p>
   </div>
 </template>
 
