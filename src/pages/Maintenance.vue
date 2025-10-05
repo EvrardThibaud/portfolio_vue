@@ -1,7 +1,9 @@
 <script setup>
 import GradientBlinds from "../components/ui/GradientBlinds.vue";
+import LightRays from "../components/ui/LightRays.vue";
 import Counter from "../components/ui/Counter.vue";
-import { ref, onMounted, onUnmounted } from "vue";
+
+import { ref, onMounted, onUnmounted, computed } from "vue";
 
 const targetDate = new Date("2025-10-12T00:00:00");
 const timeUnits = ref([
@@ -40,24 +42,32 @@ onMounted(() => {
 });
 
 onUnmounted(() => clearInterval(interval));
+
+const windowWidth = ref(window.innerWidth);
+
+window.addEventListener('resize', () => {
+  windowWidth.value = window.innerWidth;
+});
+
+const fontSize = computed(() => {
+  if (windowWidth.value < 640) return 50;  // mobile
+  if (windowWidth.value < 1024) return 80; // tablet
+  return 100;                             // desktop
+});
 </script>
 
 <template>
-  <div style="position: relative; width: 100%; height: 100vh">
-    <GradientBlinds
-      :gradient-colors="['#FF5ACD', '#FBDA61']"
-      :angle="119"
-      :noise="0.6"
-      :blind-count="64"
-      :blind-min-width="10"
-      :spotlight-radius="0.3"
-      :spotlight-softness="1"
-      :spotlight-opacity="1"
-      :mouse-dampening="0.12"
-      :distort-amount="3"
-      shine-direction="right"
-      mix-blend-mode="lighten"
+  <div style="position: relative; width: 100vw; height: 100vh">
+    <LightRays
       style="position: absolute; inset: 0; z-index: 0"
+      rays-origin="top-center"
+      :rays-speed="1.5"
+      :light-spread="0.8"
+      :ray-length="1.2"
+      :follow-mouse="true"
+      :mouse-influence="0.1"
+      :noise-amount="1"
+      class-name="custom-rays"
     />
 
     <div class="countdown-container">
@@ -66,7 +76,8 @@ onUnmounted(() => clearInterval(interval));
           <p>{{ unit.label }}</p>
           <Counter
             :value="unit.value"
-            :fontSize="100"
+            :fontSize="fontSize"
+            fontWeight="800"
             :padding="5"
             :gap="0"
             textColor="white"
@@ -91,6 +102,7 @@ onUnmounted(() => clearInterval(interval));
       </template>
     </div>
   </div>
+  
 </template>
 
 <style scoped>
