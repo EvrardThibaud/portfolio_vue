@@ -3,7 +3,6 @@ import "./style.scss";
 import "./style/card.scss";
 import "./style/button.scss";
 import "./style/input.scss";
-import "./style/container.scss";
 import "./style/box.scss";
 import App from "./App.vue";
 import router from "./router";
