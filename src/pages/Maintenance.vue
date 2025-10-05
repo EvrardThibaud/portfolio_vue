@@ -1,9 +1,49 @@
 <script setup>
 import GradientBlinds from "../components/ui/GradientBlinds.vue";
+import Counter from "../components/ui/Counter.vue";
+import { ref, onMounted, onUnmounted } from "vue";
+
+const targetDate = new Date("2025-10-12T00:00:00");
+const timeUnits = ref([
+  { label: "Days", value: 0 },
+  { label: "Hours", value: 0 },
+  { label: "Minutes", value: 0 },
+  { label: "Seconds", value: 0 },
+]);
+
+let interval;
+
+const updateCountdown = () => {
+  const now = new Date();
+  const diff = targetDate.getTime() - now.getTime();
+
+  if (diff <= 0) {
+    timeUnits.value.forEach((unit) => (unit.value = 0));
+    clearInterval(interval);
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  timeUnits.value[0].value = days;
+  timeUnits.value[1].value = hours;
+  timeUnits.value[2].value = minutes;
+  timeUnits.value[3].value = seconds;
+};
+
+onMounted(() => {
+  updateCountdown();
+  interval = setInterval(updateCountdown, 1000);
+});
+
+onUnmounted(() => clearInterval(interval));
 </script>
 
 <template>
-  <div style="width: 100%; height: 100vh; position: relative">
+  <div style="position: relative; width: 100%; height: 100vh">
     <GradientBlinds
       :gradient-colors="['#FF5ACD', '#FBDA61']"
       :angle="119"
@@ -17,6 +57,46 @@ import GradientBlinds from "../components/ui/GradientBlinds.vue";
       :distort-amount="3"
       shine-direction="right"
       mix-blend-mode="lighten"
+      style="position: absolute; inset: 0; z-index: 0"
     />
+
+    <div
+      style="
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        pointer-events: none;
+      "
+    >
+      <template v-for="(unit, i) in timeUnits" :key="i">
+        <Counter
+          :value="unit.value"
+          :fontSize="50"
+          :padding="5"
+          :gap="10"
+          textColor="white"
+          :fontWeight="900"
+          gradientFrom="none"
+          gradientTo="none"
+          :containerStyle="{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            background: 'rgba(255,255,255,0.1)',
+            borderRadius: '12px',
+          }"
+          :counterStyle="{
+            padding: '10px 20px',
+          }"
+          :digitStyle="{
+            color: 'white',
+            textShadow: '0 0 10px rgba(255,255,255,0.5)',
+          }"
+        />
+      </template>
+    </div>
   </div>
 </template>
