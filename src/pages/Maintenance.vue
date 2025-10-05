@@ -60,43 +60,48 @@ onUnmounted(() => clearInterval(interval));
       style="position: absolute; inset: 0; z-index: 0"
     />
 
-    <div
-      style="
-        position: relative;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        pointer-events: none;
-      "
-    >
+    <div class="countdown-container">
       <template v-for="(unit, i) in timeUnits" :key="i">
-        <Counter
-          :value="unit.value"
-          :fontSize="50"
-          :padding="5"
-          :gap="10"
-          textColor="white"
-          :fontWeight="900"
-          gradientFrom="none"
-          gradientTo="none"
-          :containerStyle="{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            background: 'rgba(255,255,255,0.1)',
-            borderRadius: '12px',
-          }"
-          :counterStyle="{
-            padding: '10px 20px',
-          }"
-          :digitStyle="{
-            color: 'white',
-            textShadow: '0 0 10px rgba(255,255,255,0.5)',
-          }"
-        />
+        <div class="flex flex-col items-center mx-2">
+          <p>{{ unit.label }}</p>
+          <Counter
+            :value="unit.value"
+            :fontSize="100"
+            :padding="5"
+            :gap="0"
+            textColor="white"
+            :fontWeight="900"
+            gradientFrom="none"
+            gradientTo="none"
+            :containerStyle="{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }"
+            :counterStyle="{
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              borderRadius: '12px',
+            }"
+            :digitStyle="{
+              color: 'white',
+              textShadow: '0 0 10px rgba(255,255,255,0.5)',
+            }"
+          />
+        </div>
       </template>
     </div>
   </div>
 </template>
+
+<style scoped>
+.countdown-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 12px;
+}
+</style>
