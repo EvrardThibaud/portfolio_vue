@@ -84,15 +84,6 @@ const fontSize = computed(() => {
             :fontWeight="900"
             gradientFrom="none"
             gradientTo="none"
-            :containerStyle="{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }"
-            :counterStyle="{
-              backgroundColor: 'rgba(0,0,0,0.3)',
-              borderRadius: '12px',
-            }"
             :digitStyle="{
               color: 'white',
               textShadow: '0 0 10px rgba(255,255,255,0.5)',
