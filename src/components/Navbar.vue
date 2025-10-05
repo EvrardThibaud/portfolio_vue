@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ThemeToggle from "./ThemeToggle.vue";
 </script>
 
 <template>
@@ -13,7 +12,6 @@ import ThemeToggle from "./ThemeToggle.vue";
       <RouterLink :to="{ name: 'design' }" class="hover">
         Graphic Design
       </RouterLink>
-      <ThemeToggle></ThemeToggle>
     </div>
   </nav>
 </template>
