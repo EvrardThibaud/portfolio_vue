@@ -10,7 +10,7 @@ import GradientBlinds from "../components/ui/GradientBlinds.vue";
       :noise="0.6"
       :blind-count="64"
       :blind-min-width="10"
-      :spotlight-radius="0.4"
+      :spotlight-radius="0.3"
       :spotlight-softness="1"
       :spotlight-opacity="1"
       :mouse-dampening="0.12"
