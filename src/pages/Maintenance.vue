@@ -66,7 +66,7 @@ const fontSize = computed(() => {
       :ray-length="1.2"
       :follow-mouse="true"
       :mouse-influence="0.1"
-      :noise-amount="1"
+      :noise-amount="0"
       class-name="custom-rays"
     />
 
