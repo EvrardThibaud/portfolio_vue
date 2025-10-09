@@ -4,6 +4,7 @@ import CustomCountUp from '@/components/Custom/CustomCountUp.vue'
 </script>
 
 <template>
+        <img src="/logo.png"></img>
         <CustomCarousel></CustomCarousel>
         <div class="flex gap-11 flex-wrap w-full justify-center p-12">
             <CustomCountUp
@@ -23,4 +24,8 @@ import CustomCountUp from '@/components/Custom/CustomCountUp.vue'
         </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+img {
+    max-width: 30vw;
+}
+</style>
