@@ -35,7 +35,7 @@ for (let i = 1; i <= 11; i++) {
         v-for="(image, index) in images"
         :key="index"
       >
-        <img class="carousel-image" :src="image" alt="" />
+        <img class="carousel-image" :src="image" alt="" loading="lazy"/>
       </CarouselItem>
     </CarouselContent>
   </Carousel>
