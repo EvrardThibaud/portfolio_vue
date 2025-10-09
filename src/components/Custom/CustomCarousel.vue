@@ -11,6 +11,13 @@ let images: string[] = [];
 for (let i = 1; i <= 11; i++) {
   images.push(`/youtube_thumbnails/thumbnail${i}.png`);
 }
+
+const props = defineProps({
+  direction: {
+    type: String as () => "forward" | "backward",
+    default: "forward",
+  },
+})
 </script>
 
 <template>
@@ -25,7 +32,7 @@ for (let i = 1; i <= 11; i++) {
         startDelay: 0,
         stopOnInteraction: false,
         speed: 2,
-        direction: 'backward',
+        direction: direction,
       }),
     ]"
   >
