@@ -16,7 +16,7 @@ import ClickSpark from "./components/ui/ClickSpark.vue";
     class="interactive-area"
   >
     <!-- <Navbar></Navbar> -->
-    <main class="flex flex-col items-center">
+    <main>
       <RouterView></RouterView>
     </main>
     <Footer></Footer>
