@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import CustomCarousel from '@/components/Custom/CustomCarousel.vue'
 import CustomCountUp from '@/components/Custom/CustomCountUp.vue'
+import Navbar from '@/components/Navbar.vue'
 </script>
 
 <template>
-        <img src="/logo.png"></img>
+        <navbar></navbar>
+        <!-- <img src="/logo.png"></img>
         <div>
           <CustomCarousel></CustomCarousel>
           <CustomCarousel direction="backward"></CustomCarousel>
           <CustomCarousel></CustomCarousel>
-        </div>
+        </div> -->
         <div class="flex gap-11 flex-wrap w-full justify-center p-12">
             <CustomCountUp
                 :title="'YouTube thumbnails created'"

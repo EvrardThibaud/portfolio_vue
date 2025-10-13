@@ -1,23 +1,34 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
+const items = ['Dev', 'Design']
+const activeIndex = ref(0)
+
+const indicatorStyle = computed(() => ({
+  transform: `translateX(${activeIndex.value * 100}%)`,
+  transition: 'transform 0.3s ease',
+}))
 </script>
 
 <template>
-  <nav class="flex items-center fixed h-full w-auto left-0 top-0 p-16">
-    <div class="flex flex-col gap-2">
-      <RouterLink :to="{ name: 'home' }" class="hover"> Home </RouterLink>
-      <RouterLink :to="{ name: 'projects' }" class="hover">
-        Projects
-      </RouterLink>
-      <RouterLink :to="{ name: 'skills' }" class="hover"> Skills </RouterLink>
-      <RouterLink :to="{ name: 'design' }" class="hover">
-        Graphic Design
-      </RouterLink>
+  <div class="bg-slate-600 rounded-full p-2 flex gap-2 relative overflow-hidden">
+    <!-- Indicateur -->
+    <div
+      class="bg-slate-50 w-1/2 h-10 rounded-full absolute z-0"
+      :style="indicatorStyle"
+    ></div>
+
+    <!-- Éléments -->
+    <div
+      v-for="(item, i) in items"
+      :key="i"
+      class="p-2 w-1/2 text-center text-black z-10 cursor-pointer"
+      @click="activeIndex = i"
+    >
+      <p>{{ item }}</p>
     </div>
-  </nav>
+  </div>
 </template>
 
 <style scoped>
-.hover:hover {
-  transform: translateX(0.4rem);
-}
 </style>
