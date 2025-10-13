@@ -23,7 +23,7 @@ const props = defineProps({
     text-align: center;
     border-radius: 8px;
     box-shadow: 0px 0px 1px #81a9b8;
-    background: linear-gradient(145deg, #121212, #0f0f0f);
+    background: linear-gradient(145deg, #ffffff03, #81a9b82a);
     padding: 2rem 0rem;
     width: 300px;
     max-width: 95vw;
