@@ -13,18 +13,15 @@ const updateIndicator = () => {
   }
 }
 
-// Met à jour l'indicator à chaque changement d'index
 watch(activeIndex, () => {
   nextTick(() => updateIndicator())
 })
 
-// Initialise la largeur au montage
 nextTick(() => updateIndicator())
 
 const indicatorStyle = computed(() => ({
   width: `${indicatorWidth.value}px`,
-  transform: `translateX(${activeIndex.value * 100}%)`,
-}))
+  transform: `translateX(calc(${activeIndex.value * 100}% ${activeIndex.value === menuItems.length - 1 ? '- 0.4rem' : '+ 0.5rem'} ))`,}))
 </script>
 
 <template>
@@ -54,6 +51,7 @@ const indicatorStyle = computed(() => ({
     left: 0;
     height: 1.9rem;
     background-color: #8b8b8b7a;
+    box-shadow: 0px 0px 1px #fcfeff;
     border-radius: 9999px;
     z-index: 0;
     transition: transform 0.6s cubic-bezier(0.18, 0.89, 0.28, 1.17);
