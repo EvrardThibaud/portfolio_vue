@@ -43,14 +43,15 @@ const indicatorStyle = computed(() => ({
     display: flex;
     gap: 0.5rem;
     position: relative;
+    height: 3rem;
 }
 
 .indicator {
     position: absolute;
     top: 0.5rem;
     left: 0;
-    height: 1.9rem;
-    background-color: #8b8b8b7a;
+    height: 2rem;
+    background-color: #81a9b81f;
     box-shadow: 0px 0px 1px #fcfeff;
     border-radius: 9999px;
     z-index: 0;
@@ -65,6 +66,7 @@ const indicatorStyle = computed(() => ({
     z-index: 1;
     cursor: pointer;
     user-select: none;
+    width: auto;
 }
 
 .nav-item:active {
