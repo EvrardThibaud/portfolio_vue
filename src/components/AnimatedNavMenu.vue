@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { ref, computed, nextTick, watch, useTemplateRef } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const itemRefs = useTemplateRef('items')
-const menuItems = ['Dev', 'Design']
+
+const menuItems = [
+  { name: 'Dev', route: '/projects' },
+  { name: 'Design', route: '/graphic-design' },
+]
+
 const activeIndex = ref(0)
 const indicatorWidth = ref(0)
 
@@ -21,17 +27,24 @@ nextTick(() => updateIndicator())
 
 const indicatorStyle = computed(() => ({
   width: `${indicatorWidth.value}px`,
-  transform: `translateX(calc(${activeIndex.value * 100}% ${activeIndex.value === menuItems.length - 1 ? '- 0.4rem' : '+ 0.5rem'} ))`,}))
+  transform: `translateX(calc(${activeIndex.value * 100}% ${activeIndex.value === menuItems.length - 1 ? '- 0.4rem' : '+ 0.5rem'} ))`,
+}))
 </script>
 
 <template>
-    <div class="nav-container">
-        <div class="indicator" :style="indicatorStyle"></div>
+  <div class="nav-container">
+    <div class="indicator" :style="indicatorStyle"></div>
 
-        <div ref="items" v-for="(item, i) in menuItems" :key="i" class="nav-item" @click="activeIndex = i">
-            {{ item }}
-        </div>
+    <div 
+      ref="items" 
+      v-for="(item, i) in menuItems" 
+      :key="i" 
+      class="nav-item" 
+      @click="activeIndex = i"
+    >
+      <RouterLink :to="item.route">{{ item.name }}</RouterLink>
     </div>
+  </div>
 </template>
 
 <style scoped>
@@ -44,6 +57,7 @@ const indicatorStyle = computed(() => ({
     gap: 0.5rem;
     position: relative;
     height: 3rem;
+    backdrop-filter: blur(3px);
 }
 
 .indicator {

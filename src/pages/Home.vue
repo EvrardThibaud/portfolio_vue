@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import CustomCarousel from '@/components/Custom/CustomCarousel.vue'
 import CustomCountUp from '@/components/Custom/CustomCountUp.vue'
-import Header from '@/components/Header.vue';
+import Presentation from '@/components/Presentation.vue'
+import TargetCursor from '@/components/ui/TargetCursor.vue'
 </script>
 
 <template>
-    <Header></Header>
     <!-- <img src="/logo.png"></img>
         <div>
           <CustomCarousel></CustomCarousel>
           <CustomCarousel direction="backward"></CustomCarousel>
           <CustomCarousel></CustomCarousel>
         </div> -->
-    <div class="flex gap-11 flex-wrap w-full justify-center p-12">
+    <Presentation>
+    </Presentation>
+    <section>
+        <TargetCursor :spin-duration="2" :hide-default-cursor="true" />
+        
+        <button class="cursor-target">Click me!</button>
+        <div class="cursor-target">Hover target</div>
+    </section>
+    <!-- <div class="flex gap-11 flex-wrap w-full justify-center p-12">
         <CustomCountUp
             :title="'YouTube thumbnails created'"
             :to="1000"
@@ -20,11 +28,13 @@ import Header from '@/components/Header.vue';
         ></CustomCountUp>
         <CustomCountUp :title="'Clients collaborated with'" :to="20" :suffix="'+'"></CustomCountUp>
         <CustomCountUp :title="'Years of experience'" :to="5"></CustomCountUp>
-    </div>
+    </div> -->
 </template>
 
 <style scoped>
-img {
-    max-width: 30vw;
+section {
+    height: 100vh;
+    width: 100%;
+    background-color: green;
 }
 </style>

@@ -2,9 +2,13 @@
 import AnimatedNavMenu from '@/components/AnimatedNavMenu.vue'
 </script>
 <template>
-    <header class="fixed top-0 w-screen">
-        <div class="header-content flex justify-around py-2">
+    <header class="sticky top-0 w-screen h-16">
+        <div class="flex justify-between p-2 m-2">
+            <RouterLink to="/">
+                <img src="/fav_icon.png" class="h-12" />
+            </RouterLink>
             <AnimatedNavMenu />
+            <div></div>
         </div>
     </header>
 </template>
